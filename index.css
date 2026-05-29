@@ -1,0 +1,163 @@
+/* Extracted styles from index.html */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #a3a3a3;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #262626;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #737373;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* 
+   Theme Variables 
+   Using CSS variables for complex RGBA glass values to keep HTML clean 
+*/
+:root {
+  /* Light Mode Glass - Increased Transparency */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  --glass-nav-bg: rgba(255, 255, 255, 0.15);
+  --glass-nav-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  /* Navbar progress defaults (light mode) */
+  --nav-progress-color: rgba(15, 23, 42, 0.92); /* neutral-900 */
+  --nav-progress-glow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  --text-gradient-start: #171717;
+  --text-gradient-end: #525252;
+}
+
+.dark {
+  /* Dark Mode Glass - Increased Transparency */
+  --glass-bg: rgba(10, 10, 10, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --glass-nav-bg: rgba(5, 5, 5, 0.1);
+  --glass-nav-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  /* Navbar progress for dark mode */
+  --nav-progress-color: rgba(255, 255, 255, 0.88);
+  --nav-progress-glow: 0 6px 18px rgba(255, 255, 255, 0.06);
+  --text-gradient-start: #ffffff;
+  --text-gradient-end: #94a3b8;
+}
+
+/* Glass Utility Classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card-hover {
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.glass-card-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.dark .glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Navbar progress bar as bottom border using pseudo-element
+   Uses --nav-progress-scale (0..1) to set width so it respects
+   parent's rounded corners. */
+#navbar {
+  /* Keep overflow hidden on desktop to constrain the progress pseudo-element,
+     but allow visible overflow on small screens so the absolute mobile menu can
+     extend outside the navbar without being clipped. */
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  #navbar {
+    overflow: hidden;
+  }
+}
+
+#navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: calc(var(--nav-progress-scale, 0) * 100%);
+  background: var(--nav-progress-color);
+  box-shadow: var(--nav-progress-glow);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  pointer-events: none;
+  transition: width 200ms linear;
+}
+
+/* Ensure the mobile overlay sits above the nav on small screens */
+#mobile-menu {
+  z-index: 9998;
+}
+
+/* Light mode hover adjustments */
+html:not(.dark) .glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Nav specific glass */
+.glass-nav {
+  background: var(--glass-nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--glass-nav-shadow);
+  border: 1px solid var(--glass-border);
+}
+
+/* Gradient Text */
+.text-gradient {
+  background: linear-gradient(
+    to bottom right,
+    var(--text-gradient-start),
+    var(--text-gradient-end)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scroll Reveal Utility */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

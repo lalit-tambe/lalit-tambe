@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lalit Tambe | Full Stack Engineer</title>
+    
+    <!-- Google Fonts: Inter & JetBrains Mono (for coding touch) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons: using Font Awesome via CSS only (no JS) -->
+
+    <!-- Font Awesome (brands) for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Devicon CDN -->
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable class-based dark mode
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        neutral: {
+                            850: '#1f1f1f',
+                            950: '#0a0a0a', // Deep black
+                        }
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'blink': 'blink 1s step-end infinite',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        blink: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<link rel="stylesheet" href="/index.css">
+    <!-- Inline favicon (prevents browser requesting /favicon.ico) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='100%25' height='100%25' fill='%23111'/%3E%3C/svg%3E">
+</head>
+<body class="text-neutral-600 dark:text-neutral-300 font-sans antialiased relative selection:bg-neutral-900 selection:text-white dark:selection:bg-white/20 dark:selection:text-white overflow-x-hidden transition-colors duration-500">
+
+    <!-- Background Ambience -->
+    <!-- Z-Index 0 to sit behind content but above nothing -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none bg-slate-50 dark:bg-neutral-950 transition-colors duration-500 z-0">
+        <!-- Base Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950 opacity-80"></div>
+
+        <!-- Dynamic Orbs Container -->
+        <div id="orb-canvas" class="absolute inset-0 overflow-hidden"></div>
+        
+        <!-- Subtle overlay (removed external noise.svg to avoid extra file/404s) -->
+        <div class="absolute inset-0 opacity-10 bg-white/5 dark:bg-black/5 mix-blend-overlay"></div>
+    </div>
+    
+    <!-- Navigation - Floating Card Style -->
+    <nav class="fixed top-4 left-0 right-0 mx-auto w-[92%] max-w-5xl z-50 glass-nav rounded-2xl transition-all duration-300" id="navbar">
+        <div class="px-6 h-14 md:h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="text-neutral-900 dark:text-white font-bold font-mono text-xl tracking-tight hover:opacity-80 transition-opacity flex items-center gap-2">
+                <div class="w-2 h-2 bg-neutral-900 dark:bg-white rounded-full shadow-[0_0_10px_rgba(0,0,0,0.2)] dark:shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
+                &lt;Lalit Tambe /&gt;
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+                    About
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#skills" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+                    Skills
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#experience" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+                    Experience
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#projects" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+                    Projects
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+                    Contact
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                </a>
+                
+                <a href="#" class="px-5 py-2 text-sm font-medium text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/10 rounded-full hover:bg-neutral-100 dark:hover:bg-white/5 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm">
+                    <span>Resume</span>
+                    <i class="fa-solid fa-download text-sm"></i>
+                </a>
+
+                <!-- Theme Toggle Button (Desktop) -->
+                <button class="theme-toggle p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-sun text-base hidden dark:block text-yellow-300"></i>
+                    <i class="fa-solid fa-moon text-base block dark:hidden text-neutral-700"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Controls -->
+            <div class="flex items-center gap-4 md:hidden">
+                <!-- Theme Toggle Button (Mobile) -->
+                <button class="theme-toggle p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-sun text-base hidden dark:block text-yellow-300"></i>
+                    <i class="fa-solid fa-moon text-base block dark:hidden text-neutral-700"></i>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="text-neutral-900 dark:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full mt-2 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border border-neutral-200 dark:border-white/10 rounded-xl p-6 flex flex-col space-y-4 shadow-2xl overflow-hidden">
+            <a href="#about" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">About</a>
+            <a href="#skills" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">Skills</a>
+            <a href="#experience" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">Experience</a>
+            <a href="#projects" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">Projects</a>
+            <a href="#contact" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2">Contact</a>
+            <a href="#" class="mt-4 px-5 py-3 text-center font-medium text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/20 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 transition-all block">
+                Download Resume
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content - Added z-10 relative to ensure content sits on top of background -->
+    <main class="relative z-10 pt-24">
+        
+        <!-- Hero Section -->
+        <header class="min-h-[85vh] flex flex-col items-center justify-center px-6 text-center relative">
+            
+            <div class="space-y-3 max-w-5xl mx-auto animate-fade-up relative z-20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-md text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2 shadow-lg">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    Open for opportunities
+                </div>
+
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] text-gradient drop-shadow-2xl">
+                    Lalit Tambe
+                </h1>
+                
+                <!-- Typewriter Effect Container -->
+                <div class="h-8 md:h-10 pt-2 flex items-center justify-center gap-1">
+                    <h2 class="text-xl md:text-2xl text-neutral-500 dark:text-neutral-400 font-mono tracking-widest uppercase" id="typewriter-text"></h2>
+                    <span class="w-0.5 h-6 md:h-8 bg-neutral-900 dark:bg-white animate-blink"></span>
+                </div>
+
+                <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed pt-1">
+                    Architecting & developing scalable SaaS platforms and crafting intuitive digital experiences with <span class="text-neutral-900 dark:text-white font-medium">Laravel</span>, <span class="text-neutral-900 dark:text-white font-medium">Django</span>, <span class="text-neutral-900 dark:text-white font-medium">NodeJS</span>, & <span class="text-neutral-900 dark:text-white font-medium">React</span>.
+                </p>
+
+                <!-- Expertise Pills -->
+                <div class="flex flex-wrap items-center justify-center gap-3 pt-6 pb-2">
+                    <span class="px-4 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-neutral-800/40 text-xs font-medium text-neutral-600 dark:text-neutral-300 font-mono tracking-wide backdrop-blur-md">
+                        Full Stack Development
+                    </span>
+                    <span class="px-4 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-neutral-800/40 text-xs font-medium text-neutral-600 dark:text-neutral-300 font-mono tracking-wide backdrop-blur-md">
+                        SaaS
+                    </span>
+                    <span class="px-4 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-neutral-800/40 text-xs font-medium text-neutral-600 dark:text-neutral-300 font-mono tracking-wide backdrop-blur-md">
+                        Distributed Systems
+                    </span>
+                    <span class="px-4 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-neutral-800/40 text-xs font-medium text-neutral-600 dark:text-neutral-300 font-mono tracking-wide backdrop-blur-md">
+                        SDLC
+                    </span>
+                </div>
+                
+                <div class="flex items-center justify-center gap-4 pt-4">
+                    <a href="https://www.linkedin.com/in/lalittambe/" target="_blank" class="w-14 h-14 flex items-center justify-center rounded-full glass-panel text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 group hover:-translate-y-1" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in text-lg"></i>
+                    </a>
+                    <a href="https://github.com/lalit-tambe" target="_blank" class="w-14 h-14 flex items-center justify-center rounded-full glass-panel text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 group hover:-translate-y-1" aria-label="GitHub">
+                        <i class="fa-brands fa-github text-lg"></i>
+                    </a>
+                    <a href="mailto:lalittambe963@gmail.com" class="w-14 h-14 flex items-center justify-center rounded-full glass-panel text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 group hover:-translate-y-1" aria-label="Email">
+                        <i class="fa-solid fa-envelope text-lg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Fixed Alignment for Arrow removed from header to avoid overlap -->
+        </header>
+
+        <!-- Down arrow (moved below hero to avoid overlap) -->
+        <div class="flex justify-center -mt-8 mb-8 z-10">
+            <a href="#about" class="flex justify-center animate-bounce opacity-50 cursor-pointer hover:opacity-100 transition-opacity" aria-label="Scroll to About">
+                <div class="p-2 rounded-full border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm">
+                    <i class="fa-solid fa-chevron-down text-base text-neutral-900 dark:text-white"></i>
+                </div>
+            </a>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="py-32 px-6 relative reveal">
+            <div class="max-w-6xl mx-auto glass-panel rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden">
+                <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+                    <!-- Image Column - Moved Badge Below -->
+                    <div class="flex flex-col items-center gap-8 mx-auto md:mx-0 group">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-neutral-200 to-transparent dark:from-neutral-800 dark:to-transparent rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500 opacity-60"></div>
+                            <img 
+                                src="https://placehold.co/400x400/121212/808080?text=Lalit+T" 
+                                alt="Lalit Tambe" 
+                                class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border border-white/20 dark:border-white/10 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.02]"
+                            >
+                        </div>
+                        
+                        <!-- Floating Badge (Mini Terminal Style) - Moved Below -->
+                        <div class="glass-panel px-5 py-3 rounded-xl flex flex-col justify-center animate-pulse-slow bg-neutral-900/90 border-neutral-800 shadow-lg">
+                            <div class="flex gap-1.5 mb-1.5">
+                                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                            </div>
+                            <div class="text-xs font-mono text-green-400">
+                                <span class="text-neutral-500">&gt;</span> lalit.init()
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text -->
+                    <div class="space-y-8">
+                        <div>
+                            <h2 class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-2">Who I Am</h2>
+                            <h3 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white leading-tight">Bridging backend complexity with <span class="text-neutral-500">frontend elegance</span>.</h3>
+                        </div>
+                        
+                        <div class="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg font-light">
+                            <p>
+                                As a Full Stack Engineer, I build complete, end-to-end solutions. I excel at architecting secure, multi-tenant SaaS platforms in Laravel while also building dynamic, real-time UIs in React. My passion lies in solving complex data problems and building systems that are both reliable and efficient.
+                            </p>
+                            <p>
+                                My approach is defined by full-cycle ownership, from architecting a secure RBAC system to engineering an asynchronous bulk import. I make it my goal to bridge the gap between deep backend complexity and a clean, intuitive user experience.
+                            </p>
+                        </div>
+                        
+                        <div class="pt-4">
+                            <a href="#contact" class="inline-flex items-center gap-2 text-neutral-900 dark:text-white border-b border-neutral-300 dark:border-white/30 pb-1 hover:border-neutral-900 dark:hover:border-white transition-colors font-mono text-sm">
+                                $ sh contact.sh <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tilt script: smooth RAF-driven 3D tilt for .glass-card-hover -->
+        <script>
+        (function(){
+            const maxTilt = 10; // degrees
+            const scale = 1.02;
+
+            function initTilt(){
+                const cards = document.querySelectorAll('.glass-card-hover');
+                if(!cards.length) return;
+
+                cards.forEach(card => {
+                    let rect = null;
+                    let halfW = 0, halfH = 0;
+                    let targetY = 0, targetX = 0; // target rotations (deg)
+                    let currentY = 0, currentX = 0; // current rotations (deg)
+                    let rafId = null;
+
+                    const lerp = (a, b, n) => a + (b - a) * n;
+
+                    function updateRect(){
+                        rect = card.getBoundingClientRect();
+                        halfW = rect.width / 2;
+                        halfH = rect.height / 2;
+                    }
+
+                    function apply(){
+                        // smooth towards target
+                        currentX = lerp(currentX, targetX, 0.15);
+                        currentY = lerp(currentY, targetY, 0.15);
+                        card.style.transform = `perspective(1000px) rotateX(${currentY}deg) rotateY(${currentX}deg) translateZ(8px) scale(${scale})`;
+                        rafId = requestAnimationFrame(apply);
+                    }
+
+                    function startLoop(){
+                        if(!rafId) rafId = requestAnimationFrame(apply);
+                    }
+
+                    function stopLoop(){
+                        if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
+                    }
+
+                    card.addEventListener('pointerenter', (e) => {
+                        card.style.willChange = 'transform';
+                        card.style.transition = 'transform 180ms cubic-bezier(0.2,0.8,0.2,1)';
+                        updateRect();
+                        startLoop();
+                    });
+
+                    card.addEventListener('pointermove', (e) => {
+                        if(!rect) updateRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const rotateY = ((x - halfW) / halfW) * maxTilt * -1; // yaw
+                        const rotateX = ((y - halfH) / halfH) * maxTilt;      // pitch
+                        targetX = rotateY;
+                        targetY = rotateX;
+                    }, {passive:true});
+
+                    card.addEventListener('pointerleave', () => {
+                        card.style.transition = 'transform 480ms cubic-bezier(0.2,0.8,0.2,1)';
+                        targetX = 0; targetY = 0;
+                        // let the lerp settle back to zero, then stop RAF
+                        setTimeout(() => { stopLoop(); card.style.willChange = ''; card.style.transform = ''; }, 500);
+                    });
+
+                    // improve touch responsiveness without blocking vertical scroll
+                    card.style.touchAction = 'pan-y';
+                });
+            }
+
+            if(document.readyState === 'loading'){
+                window.addEventListener('DOMContentLoaded', initTilt);
+            } else {
+                initTilt();
+            }
+        })();
+        </script>
+
+        <!-- Navbar scroll progress script (uses CSS variable --nav-progress-scale on #navbar) -->
+        <script>
+        (function(){
+            const navbar = document.getElementById('navbar');
+            if(!navbar) return;
+
+            let ticking = false;
+
+            function update(){
+                const doc = document.documentElement;
+                const scrollTop = window.scrollY || doc.scrollTop;
+                const height = doc.scrollHeight - window.innerHeight;
+                const scale = height > 0 ? (scrollTop / height) : 1;
+                // clamp 0..1
+                const s = Math.max(0, Math.min(1, scale));
+                navbar.style.setProperty('--nav-progress-scale', s);
+                ticking = false;
+            }
+
+            function onScroll(){
+                if(!ticking){
+                    window.requestAnimationFrame(update);
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, {passive:true});
+            window.addEventListener('resize', onScroll, {passive:true});
+
+            // initialize
+            update();
+        })();
+        </script>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 px-6 relative reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                    <div>
+                        <h2 class="text-4xl font-bold text-neutral-900 dark:text-white mb-2">Technical Arsenal</h2>
+                        <p class="text-neutral-500 dark:text-neutral-400">The tools I use to bring ideas to life.</p>
+                    </div>
+                    <div class="w-full md:w-1/3 h-[1px] bg-neutral-200 dark:bg-white/10"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Category: Languages -->
+                    <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
+                                <i class="fa-solid fa-code text-lg"></i>
+                            </div>
+                            <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">01</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">Languages</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- PHP -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-php-plain text-lg"></i>
+                                PHP
+                            </span>
+                            <!-- Python -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-python-plain text-lg"></i>
+                                Python
+                            </span>
+                            <!-- JavaScript -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-javascript-plain text-lg"></i>
+                                JavaScript
+                            </span>
+                            <!-- TypeScript -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-typescript-plain text-lg"></i>
+                                TypeScript
+                            </span>
+                            <!-- Bash -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-bash-plain text-lg"></i>
+                                Bash
+                            </span>
+                            <!-- HTML5 -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-html5-plain text-lg"></i>
+                                HTML5
+                            </span>
+                            <!-- CSS -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-css3-plain text-lg"></i>
+                                CSS
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Category: Frameworks -->
+                    <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
+                                <i class="fa-solid fa-layer-group text-lg"></i>
+                            </div>
+                            <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">02</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">Frameworks</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- Laravel -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-laravel-plain text-lg"></i>
+                                Laravel
+                            </span>
+                            <!-- Django -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-django-plain text-lg"></i>
+                                Django
+                            </span>
+                            <!-- React -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-react-original text-lg"></i>
+                                ReactJs
+                            </span>
+                            <!-- NodeJS -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-nodejs-plain text-lg"></i>
+                                NodeJS
+                            </span>
+                            <!-- Express -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-express-original text-lg"></i>
+                                Express.js
+                            </span>
+                            <!-- Livewire -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-bolt text-sm"></i>
+                                Livewire
+                            </span>
+                            <!-- Alpine -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-mountain text-sm"></i>
+                                AlpineJS
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Category: Databases -->
+                    <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
+                                <i class="fa-solid fa-database text-lg"></i>
+                            </div>
+                            <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">03</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">Databases</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- MySQL -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-mysql-plain text-lg"></i>
+                                MySQL
+                            </span>
+                            <!-- PostgreSQL -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-postgresql-plain text-lg"></i>
+                                PostgreSQL
+                            </span>
+                            <!-- MongoDB -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-mongodb-plain text-lg"></i>
+                                MongoDB
+                            </span>
+                            <!-- SQL Server -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-microsoftsqlserver-plain text-lg"></i>
+                                SQL Server
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Category: Tools -->
+                    <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
+                                <i class="fa-solid fa-wrench text-lg"></i>
+                            </div>
+                            <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">04</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">Tools</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- Git -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-git-plain text-lg"></i>
+                                Git
+                            </span>
+                            <!-- Docker -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-docker-plain text-lg"></i>
+                                Docker
+                            </span>
+                            <!-- Postman -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-postman-plain text-lg"></i>
+                                Postman
+                            </span>
+                            <!-- CI/CD -->
+                            <span class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
+                                <i class="devicon-githubactions-plain text-lg"></i>
+                                CI/CD
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-24 px-6 relative reveal">
+            <!-- Matches Contact width -->
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-neutral-900 dark:text-white mb-4">Experience</h2>
+                    <p class="text-neutral-500 dark:text-neutral-400">My professional journey in software engineering.</p>
+                </div>
+
+                <!-- Centered Inner Container with Timeline hanging on Left -->
+                <div class="relative max-w-3xl mx-auto pl-10 md:pl-0"> 
+                    
+                    <!-- Vertical Line -->
+                    <!-- Positioned using precise anchors and -translate-x-1/2 for perfect centering -->
+                    <div class="absolute left-4 md:-left-12 -top-12 -bottom-12 w-[2px] -translate-x-1/2 bg-gradient-to-b from-transparent via-neutral-400 to-transparent dark:from-transparent dark:via-white dark:to-transparent"></div>
+
+                    <div class="space-y-12">
+                        
+                        <!-- Job 1 -->
+                        <div class="relative group">
+                            <!-- Dot -->
+                            <!-- Anchored to same coordinates as line and centered via translate -->
+                            <div class="absolute left-4 md:-left-12 top-10 w-4 h-4 -translate-x-1/2 bg-neutral-200 dark:bg-white border-2 border-white dark:border-white/20 rounded-full z-10 shadow-[0_0_15px_rgba(255,255,255,0.5)] group-hover:scale-125 transition-transform"></div>
+                            
+                            <!-- Horizontal Connector -->
+                            <!-- Spans from line center to card edge -->
+                            <div class="absolute left-4 md:-left-12 top-12 w-6 md:w-12 h-[2px] bg-gradient-to-r from-neutral-200 to-transparent dark:from-white dark:to-transparent"></div>
+
+                            <!-- Card -->
+                            <div class="glass-panel p-8 md:p-10 rounded-2xl border-l-2 border-l-neutral-300 dark:border-l-white/30 hover:border-l-neutral-900 dark:hover:border-l-white transition-colors relative">
+                                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-2">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white">Full Stack Engineer</h3>
+                                        <p class="text-sm font-medium text-neutral-600 dark:text-neutral-300 mt-1">Insnapsys</p>
+                                    </div>
+                                    <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-neutral-700 dark:text-white uppercase bg-neutral-100 dark:bg-white/10 rounded-full border border-neutral-200 dark:border-white/5 whitespace-nowrap">
+                                        May 2021 - Present
+                                    </span>
+                                </div>
+                                
+                                <p class="text-neutral-600 dark:text-neutral-300 text-sm mb-6">Architecting secure, scalable solutions.</p>
+                                
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
+                                        <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+                                        Architected multi-tenant sync engine.
+                                    </li>
+                                    <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
+                                        <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+                                        Engineered multi-layered security (RBAC/2FA).
+                                    </li>
+                                    <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
+                                        <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+                                        Implemented ETL pipeline (60% faster).
+                                    </li>
+                                    <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
+                                        <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+                                        Developed dynamic custom fields module.
+                                    </li>
+                                    <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
+                                        <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+                                        Engineered real-time alarm dashboard.
+                                    </li>
+                                    <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
+                                        <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+                                        Owned bulk data import/export (Laravel Queues).
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Job 2 -->
+                        <div class="relative group">
+                            <!-- Dot -->
+                            <div class="absolute left-4 md:-left-12 top-10 w-4 h-4 -translate-x-1/2 bg-neutral-200 dark:bg-white border-2 border-white dark:border-white/20 rounded-full z-10 shadow-[0_0_15px_rgba(255,255,255,0.5)] group-hover:scale-125 transition-transform"></div>
+                            
+                            <!-- Horizontal Connector -->
+                            <div class="absolute left-4 md:-left-12 top-12 w-6 md:w-12 h-[2px] bg-gradient-to-r from-neutral-200 to-transparent dark:from-white dark:to-transparent"></div>
+
+                            <!-- Card -->
+                            <div class="glass-panel p-8 md:p-10 rounded-2xl border-l-2 border-l-neutral-300 dark:border-l-white/30 hover:border-l-neutral-900 dark:hover:border-l-white transition-colors relative">
+                                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-2">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white">Frontend Intern</h3>
+                                        <p class="text-sm font-medium text-neutral-600 dark:text-neutral-300 mt-1">AxelBuzz</p>
+                                    </div>
+                                    <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-neutral-700 dark:text-white uppercase bg-neutral-100 dark:bg-white/10 rounded-full border border-neutral-200 dark:border-white/5 whitespace-nowrap">
+                                        Dec 2020 - May 2021
+                                    </span>
+                                </div>
+                                
+                                <p class="text-neutral-600 dark:text-neutral-300 text-sm mb-6">Building interactive interfaces.</p>
+                                
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
+                                        <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+                                        Spearheaded Survey & Quiz SPA (React/SSO).
+                                    </li>
+                                    <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
+                                        <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+                                        Developed heatmaps for user data.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 px-6 reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center justify-between mb-12">
+                    <h2 class="text-4xl font-bold text-neutral-900 dark:text-white">Featured Projects</h2>
+                    <a href="https://github.com/lalit-tambe" target="_blank" class="hidden md:flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                        View GitHub <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="glass-panel p-8 rounded-3xl flex flex-col glass-card-hover group relative overflow-hidden">
+                        <!-- Gradient Overlay on Hover -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-neutral-100 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                        <div class="flex justify-between items-start mb-6 relative z-10">
+                            <div class="p-4 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-white/10 text-neutral-900 dark:text-white shadow-lg group-hover:scale-110 group-hover:shadow-xl group-hover:border-neutral-300 dark:group-hover:border-white/30 transition-all duration-300">
+                                <i class="fa-solid fa-database text-lg"></i>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="#" class="p-2 hover:bg-neutral-200 dark:hover:bg-white/10 rounded-full transition-colors group/npm group-hover:bg-white/80 dark:group-hover:bg-white/10" title="View NPM Package">
+                                    <!-- Improved NPM Logo representation (Standard shape) -->
+                                    <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-neutral-500 dark:text-neutral-400 group-hover/npm:text-red-500 transition-colors">
+                                        <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.129z" fill="currentColor"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="p-2 hover:bg-neutral-200 dark:hover:bg-white/10 rounded-full transition-colors group-hover:bg-white/80 dark:group-hover:bg-white/10"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-3 relative z-10">mongo-aggregate</h3>
+                        <p class="text-neutral-600 dark:text-neutral-300 text-sm mb-8 leading-relaxed flex-grow relative z-10">
+                            A fluent, chainable API designed to abstract complex MongoDB aggregation stages ($match, $lookup) into intuitive methods like where() and select().
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 relative z-10">
+                            <span class="px-3 py-1 bg-white/50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-white/5 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-200">JavaScript</span>
+                            <span class="px-3 py-1 bg-white/50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-white/5 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-200">TypeScript</span>
+                            <span class="px-3 py-1 bg-white/50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-white/5 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-200">Jest</span>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder Card -->
+                    <div class="glass-panel p-8 rounded-3xl flex flex-col justify-center items-center glass-card-hover group relative overflow-hidden border-dashed border-neutral-300 dark:border-white/10">
+                        <div class="p-4 bg-neutral-100 dark:bg-neutral-900/50 rounded-full border border-neutral-200 dark:border-white/5 text-neutral-400 dark:text-neutral-500 mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-folder-plus text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-600 dark:text-neutral-300 mb-2">More Projects Coming Soon</h3>
+                        <p class="text-neutral-500 text-sm text-center">Currently working on some exciting SaaS platforms.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-6 reveal">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="glass-panel rounded-[2.5rem] p-10 md:p-20 border border-neutral-200 dark:border-white/10 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-100 dark:via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    
+                    <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-6">Let's work together</h2>
+                    <p class="text-neutral-600 dark:text-neutral-300 mb-12 text-lg max-w-xl mx-auto">I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                        <a href="mailto:lalittambe963@gmail.com" class="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-black font-bold rounded-full hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(0,0,0,0.4)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transform hover:-translate-y-1">
+                            <i class="fa-solid fa-envelope text-base"></i>
+                            Say Hello
+                        </a>
+                        
+                        <a href="tel:+919637820297" class="px-8 py-4 bg-transparent border border-neutral-400 dark:border-white/20 text-neutral-900 dark:text-white font-medium rounded-full hover:bg-neutral-200 dark:hover:bg-white/5 transition-all flex items-center gap-2 backdrop-blur-sm">
+                            <i class="fa-solid fa-phone text-base"></i>
+                            +91 9637820297
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-neutral-200 dark:border-white/5 text-center px-6 bg-white dark:bg-neutral-950 relative z-10 transition-colors duration-500">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-neutral-500 dark:text-neutral-500 text-sm font-mono">© 2023 Lalit Tambe. All rights reserved.</p>
+            <p class="text-neutral-600 dark:text-neutral-500 text-xs font-mono">
+                <span class="text-neutral-400">git commit -m</span> "Designed & Built with <span class="text-red-600 dark:text-red-900">♥</span>"
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Icons are handled via Font Awesome CSS/classes only — no JS initialization required.
+
+        // Console Easter Egg
+        console.log(
+            "%c Hello Developer! 👋 \n%c If you're reading this, we should probably work together.",
+            "color: #fff; background: #000; padding: 10px; font-size: 20px; border-radius: 5px;",
+            "color: #aaa; font-size: 14px; padding: 5px;"
+        );
+
+        // Typewriter Effect
+        const roles = ["Full Stack Engineer", "Laravel Architect", "System Designer", "Optimizer"];
+        const typewriterElement = document.getElementById('typewriter-text');
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function typeWriter() {
+            const currentRole = roles[roleIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; // Faster when deleting
+            } else {
+                typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100; // Normal typing speed
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500; // Pause before new word
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+        
+        // Start typing
+        typeWriter();
+
+        // Mobile Menu Toggle Logic (robust + touch-friendly)
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.style.touchAction = 'manipulation';
+            mobileMenuBtn.style.cursor = 'pointer';
+            mobileMenuBtn.style.zIndex = '9999';
+            mobileMenu.style.zIndex = '9998';
+
+            let lastToggle = 0;
+            const toggleMobileMenu = (e) => {
+                const now = Date.now();
+                if (now - lastToggle < 300) return; // debounce rapid events
+                lastToggle = now;
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                // aria and visual feedback
+                try { mobileMenuBtn.setAttribute('aria-expanded', (!isHidden).toString()); } catch (e) {}
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    } else {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    }
+                    // quick flash for touch devices
+                    icon.style.transform = 'scale(0.95)';
+                    setTimeout(() => { icon.style.transform = ''; }, 120);
+                }
+                try { console.debug('mobileMenu: toggled', mobileMenu.classList.contains('hidden')); } catch(e){}
+            };
+
+            // Use click + pointerup/touchend which are reliable for taps
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            mobileMenuBtn.addEventListener('pointerup', toggleMobileMenu);
+            mobileMenuBtn.addEventListener('touchend', toggleMobileMenu, { passive: true });
+
+            // Some browsers require a non-passive touchstart to register tap reliably
+            mobileMenuBtn.addEventListener('touchstart', function(e){ e.preventDefault(); toggleMobileMenu(); }, { passive: false });
+
+            // Close mobile menu when clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Theme Toggle Logic
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme preference or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (htmlElement.classList.contains('dark')) {
+                    htmlElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    htmlElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+                // Refresh orbs for theme change
+                initOrbs();
+            });
+        });
+
+        // Sticky Nav visual change on scroll
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Add stronger shadow/border on scroll
+                nav.classList.add('shadow-lg');
+                nav.classList.add('border-neutral-200');
+                nav.classList.add('dark:border-white/10');
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.classList.remove('border-neutral-200');
+                nav.classList.remove('dark:border-white/10');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Trigger once on load
+        revealOnScroll();
+
+        // Floating Orbs Animation Engine with Collision Detection
+        const canvas = document.getElementById('orb-canvas');
+        let orbs = [];
+        let animationFrameId;
+
+        // Orb Logic using Inline Styles for guaranteed visibility
+        function initOrbs() {
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            canvas.innerHTML = ''; // Clear existing
+            orbs = [];
+            const isDark = htmlElement.classList.contains('dark');
+            
+            // Calculate number of orbs based on screen area to prevent overcrowding
+            const area = window.innerWidth * window.innerHeight;
+            const densityDivisor = 50000; // Increased density (lower divisor for more orbs)
+            const numOrbs = Math.min(Math.max(Math.floor(area / densityDivisor), 8), 25); // Min 8, Max 25
+
+            // Colors
+            const darkColors = [
+                'hsla(0, 0%, 30%, 0.15)',  
+                'hsla(0, 0%, 50%, 0.15)',  
+                'hsla(220, 15%, 40%, 0.15)', 
+                'hsla(220, 20%, 25%, 0.15)', 
+            ];
+            const lightColors = [
+                'hsla(0, 0%, 80%, 0.45)', 
+                'hsla(0, 0%, 60%, 0.45)', 
+                'hsla(220, 15%, 70%, 0.45)', 
+                'hsla(220, 15%, 85%, 0.45)', 
+            ];
+
+            const colors = isDark ? darkColors : lightColors;
+
+            for (let i = 0; i < numOrbs; i++) {
+                let attempts = 0;
+                let validPosition = false;
+                let x, y, size;
+
+                // Try to find a non-overlapping position
+                // Increased attempts to handle higher density
+                while (!validPosition && attempts < 100) {
+                    attempts++;
+                    // Random Size - slightly smaller on average to fit more
+                    size = Math.random() * 180 + 80; // 80px - 260px
+                    // Initial Position
+                    x = Math.random() * (window.innerWidth - size);
+                    y = Math.random() * (window.innerHeight - size);
+
+                    // Check collision with existing orbs
+                    let overlap = false;
+                    for (const existingOrb of orbs) {
+                        const r1 = size / 2;
+                        const r2 = existingOrb.size / 2;
+                        const c1x = x + r1;
+                        const c1y = y + r1;
+                        const c2x = existingOrb.x + r2;
+                        const c2y = existingOrb.y + r2;
+                        const distance = Math.sqrt((c1x - c2x) ** 2 + (c1y - c2y) ** 2);
+                        
+                        // Strict collision check for initial placement
+                        if (distance < r1 + r2) {
+                            overlap = true;
+                            break;
+                        }
+                    }
+                    if (!overlap) validPosition = true;
+                }
+
+                if (validPosition) {
+                    const orb = document.createElement('div');
+                    orb.style.width = `${size}px`;
+                    orb.style.height = `${size}px`;
+                    orb.style.position = 'absolute';
+                    orb.style.borderRadius = '50%';
+                    orb.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    orb.style.filter = 'blur(10px)';
+                    orb.style.willChange = 'transform';
+                    orb.style.top = '0';
+                    orb.style.left = '0';
+
+                    // Velocity
+                    let vx = (Math.random() - 0.5) * 0.8; 
+                    let vy = (Math.random() - 0.5) * 0.8;
+
+                    canvas.appendChild(orb);
+                    orbs.push({ element: orb, x, y, vx, vy, size });
+                }
+            }
+            updateOrbs();
+        }
+
+        // Animation Loop with Collision Physics
+        function updateOrbs() {
+            // 1. Move
+            orbs.forEach(orb => {
+                orb.x += orb.vx;
+                orb.y += orb.vy;
+            });
+
+            // 2. Collision Resolution
+            for (let i = 0; i < orbs.length; i++) {
+                let orb = orbs[i];
+                let r1 = orb.size / 2;
+
+                // Wall Collisions
+                if (orb.x <= 0) { orb.x = 0; orb.vx *= -1; }
+                if (orb.x >= window.innerWidth - orb.size) { orb.x = window.innerWidth - orb.size; orb.vx *= -1; }
+                if (orb.y <= 0) { orb.y = 0; orb.vy *= -1; }
+                if (orb.y >= window.innerHeight - orb.size) { orb.y = window.innerHeight - orb.size; orb.vy *= -1; }
+
+                // Orb-Orb Collisions
+                for (let j = i + 1; j < orbs.length; j++) {
+                    let other = orbs[j];
+                    let r2 = other.size / 2;
+
+                    let cx1 = orb.x + r1;
+                    let cy1 = orb.y + r1;
+                    let cx2 = other.x + r2;
+                    let cy2 = other.y + r2;
+
+                    let dx = cx2 - cx1;
+                    let dy = cy2 - cy1;
+                    let distance = Math.sqrt(dx*dx + dy*dy);
+                    let minDistance = r1 + r2;
+
+                    if (distance < minDistance) {
+                        // Resolve Overlap
+                        let overlap = minDistance - distance;
+                        let nx = dx / distance;
+                        let ny = dy / distance;
+
+                        // Separate
+                        orb.x -= nx * overlap * 0.5;
+                        orb.y -= ny * overlap * 0.5;
+                        other.x += nx * overlap * 0.5;
+                        other.y += ny * overlap * 0.5;
+
+                        // Bounce (Simple elastic)
+                        // Just swap velocity components along normal for visual simplicity
+                        let v1n = orb.vx * nx + orb.vy * ny;
+                        let v2n = other.vx * nx + other.vy * ny;
+
+                        // Apply impulse
+                        let dv = v1n - v2n;
+                        orb.vx -= dv * nx;
+                        orb.vy -= dv * ny;
+                        other.vx += dv * nx;
+                        other.vy += dv * ny;
+                    }
+                }
+            }
+
+            // 3. Render
+            orbs.forEach(orb => {
+                orb.element.style.transform = `translate(${orb.x}px, ${orb.y}px)`;
+            });
+
+            animationFrameId = requestAnimationFrame(updateOrbs);
+        }
+
+        // Initialize
+        initOrbs();
+        
+        // Handle Resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+             clearTimeout(resizeTimeout);
+             resizeTimeout = setTimeout(initOrbs, 200);
+        });
+    </script>
+    <!-- index.tsx removed (not needed). -->
+</body>
+</html>
