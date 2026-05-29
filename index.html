@@ -849,11 +849,21 @@
             // Some browsers require a non-passive touchstart to register tap reliably
             mobileMenuBtn.addEventListener('touchstart', function(e){ e.preventDefault(); toggleMobileMenu(); }, { passive: false });
 
-            // Close mobile menu when clicking a link
+            // Close mobile menu when clicking a link and restore icon/aria
+            function closeMobileMenu(){
+                mobileMenu.classList.add('hidden');
+                try { mobileMenuBtn.setAttribute('aria-expanded', 'false'); } catch(e){}
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
+
             const mobileLinks = mobileMenu.querySelectorAll('a');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
+                    closeMobileMenu();
                 });
             });
         }
