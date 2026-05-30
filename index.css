@@ -28,6 +28,16 @@
    Theme Variables 
    Using CSS variables for complex RGBA glass values to keep HTML clean 
 */
+/* Prevent white flash on mobile when browser chrome (address bar / bottom nav)
+   dynamically shows or hides during scroll. Without an explicit background on
+   html the default white browser background bleeds through. */
+html {
+  background-color: #f8fafc; /* slate-50 – matches light-mode body bg */
+}
+html.dark {
+  background-color: #0a0a0a; /* neutral-950 – matches dark-mode body bg */
+}
+
 :root {
   /* Light Mode Glass - Increased Transparency */
   --glass-bg: rgba(255, 255, 255, 0.05);
