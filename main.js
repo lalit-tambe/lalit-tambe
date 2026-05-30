@@ -1,93 +1,96 @@
 // Tilt script: smooth RAF-driven 3D tilt for .glass-card-hover
-(function () {
+// initTilt is defined at module scope so loadContent() can re-call it
+// after dynamically injecting new .glass-card-hover cards.
+function initTilt() {
   const maxTilt = 10; // degrees
   const scale = 1.02;
+  const cards = document.querySelectorAll(".glass-card-hover");
+  if (!cards.length) return;
 
-  function initTilt() {
-    const cards = document.querySelectorAll(".glass-card-hover");
-    if (!cards.length) return;
+  cards.forEach((card) => {
+    // Skip cards that already have tilt initialised
+    if (card._tiltInitialised) return;
+    card._tiltInitialised = true;
 
-    cards.forEach((card) => {
-      let rect = null;
-      let halfW = 0,
-        halfH = 0;
-      let targetY = 0,
-        targetX = 0; // target rotations (deg)
-      let currentY = 0,
-        currentX = 0; // current rotations (deg)
-      let rafId = null;
+    let rect = null;
+    let halfW = 0,
+      halfH = 0;
+    let targetY = 0,
+      targetX = 0; // target rotations (deg)
+    let currentY = 0,
+      currentX = 0; // current rotations (deg)
+    let rafId = null;
 
-      const lerp = (a, b, n) => a + (b - a) * n;
+    const lerp = (a, b, n) => a + (b - a) * n;
 
-      function updateRect() {
-        rect = card.getBoundingClientRect();
-        halfW = rect.width / 2;
-        halfH = rect.height / 2;
+    function updateRect() {
+      rect = card.getBoundingClientRect();
+      halfW = rect.width / 2;
+      halfH = rect.height / 2;
+    }
+
+    function apply() {
+      // smooth towards target
+      currentX = lerp(currentX, targetX, 0.15);
+      currentY = lerp(currentY, targetY, 0.15);
+      card.style.transform = `perspective(1000px) rotateX(${currentY}deg) rotateY(${currentX}deg) translateZ(8px) scale(${scale})`;
+      rafId = requestAnimationFrame(apply);
+    }
+
+    function startLoop() {
+      if (!rafId) rafId = requestAnimationFrame(apply);
+    }
+
+    function stopLoop() {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
       }
+    }
 
-      function apply() {
-        // smooth towards target
-        currentX = lerp(currentX, targetX, 0.15);
-        currentY = lerp(currentY, targetY, 0.15);
-        card.style.transform = `perspective(1000px) rotateX(${currentY}deg) rotateY(${currentX}deg) translateZ(8px) scale(${scale})`;
-        rafId = requestAnimationFrame(apply);
-      }
-
-      function startLoop() {
-        if (!rafId) rafId = requestAnimationFrame(apply);
-      }
-
-      function stopLoop() {
-        if (rafId) {
-          cancelAnimationFrame(rafId);
-          rafId = null;
-        }
-      }
-
-      card.addEventListener("pointerenter", (e) => {
-        card.style.willChange = "transform";
-        card.style.transition = "transform 180ms cubic-bezier(0.2,0.8,0.2,1)";
-        updateRect();
-        startLoop();
-      });
-
-      card.addEventListener(
-        "pointermove",
-        (e) => {
-          if (!rect) updateRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const rotateY = ((x - halfW) / halfW) * maxTilt * -1; // yaw
-          const rotateX = ((y - halfH) / halfH) * maxTilt; // pitch
-          targetX = rotateY;
-          targetY = rotateX;
-        },
-        { passive: true },
-      );
-
-      card.addEventListener("pointerleave", () => {
-        card.style.transition = "transform 480ms cubic-bezier(0.2,0.8,0.2,1)";
-        targetX = 0;
-        targetY = 0;
-        // let the lerp settle back to zero, then stop RAF
-        setTimeout(() => {
-          stopLoop();
-          card.style.willChange = "";
-          card.style.transform = "";
-        }, 500);
-      });
-
-      // improve touch responsiveness without blocking vertical scroll
-      card.style.touchAction = "pan-y";
+    card.addEventListener("pointerenter", () => {
+      card.style.willChange = "transform";
+      card.style.transition = "transform 180ms cubic-bezier(0.2,0.8,0.2,1)";
+      updateRect();
+      startLoop();
     });
-  }
 
-  if (document.readyState === "loading") {
-    window.addEventListener("DOMContentLoaded", initTilt);
-  } else {
-    initTilt();
-  }
-})();
+    card.addEventListener(
+      "pointermove",
+      (e) => {
+        if (!rect) updateRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateY = ((x - halfW) / halfW) * maxTilt * -1; // yaw
+        const rotateX = ((y - halfH) / halfH) * maxTilt; // pitch
+        targetX = rotateY;
+        targetY = rotateX;
+      },
+      { passive: true },
+    );
+
+    card.addEventListener("pointerleave", () => {
+      card.style.transition = "transform 480ms cubic-bezier(0.2,0.8,0.2,1)";
+      targetX = 0;
+      targetY = 0;
+      // let the lerp settle back to zero, then stop RAF
+      setTimeout(() => {
+        stopLoop();
+        card.style.willChange = "";
+        card.style.transform = "";
+      }, 500);
+    });
+
+    // improve touch responsiveness without blocking vertical scroll
+    card.style.touchAction = "pan-y";
+  });
+}
+
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", initTilt);
+} else {
+  initTilt();
+}
 
 // Navbar scroll progress script (uses CSS variable --nav-progress-scale on #navbar)
 (function () {
@@ -130,46 +133,245 @@ console.log(
   "color: #aaa; font-size: 14px; padding: 5px;",
 );
 
-// Typewriter Effect
-const roles = [
-  "Full Stack Engineer",
-  "Laravel Architect",
-  "System Designer",
-  "Optimizer",
-];
-const typewriterElement = document.getElementById("typewriter-text");
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typeSpeed = 100;
+// ─── Content Loader ────────────────────────────────────────────────────────
+// Fetches content.json and injects all dynamic content into the DOM.
+// To update portfolio content, edit content.json — no HTML changes needed.
 
-function typeWriter() {
-  const currentRole = roles[roleIndex];
-
-  if (isDeleting) {
-    typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
-    charIndex--;
-    typeSpeed = 50; // Faster when deleting
-  } else {
-    typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
-    charIndex++;
-    typeSpeed = 100; // Normal typing speed
+async function loadContent() {
+  let data;
+  try {
+    const res = await fetch("/content.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    data = await res.json();
+  } catch (err) {
+    console.warn("content.json could not be loaded:", err);
+    return;
   }
 
-  if (!isDeleting && charIndex === currentRole.length) {
-    isDeleting = true;
-    typeSpeed = 2000; // Pause at end
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    roleIndex = (roleIndex + 1) % roles.length;
-    typeSpeed = 500; // Pause before new word
+  // ── 1. Typewriter words ────────────────────────────────────────────────
+  const roles = data.typewriter?.words ?? ["Full Stack Engineer"];
+
+  // ── 2. Hero sub-heading & pills ────────────────────────────────────────
+  const heroSubEl = document.getElementById("hero-subheading");
+  if (heroSubEl && data.hero?.subheading) {
+    heroSubEl.innerHTML = data.hero.subheading;
   }
 
-  setTimeout(typeWriter, typeSpeed);
+  const heroPillsEl = document.getElementById("hero-pills");
+  if (heroPillsEl && Array.isArray(data.hero?.pills)) {
+    heroPillsEl.innerHTML = data.hero.pills
+      .map(
+        (pill) =>
+          `<span class="px-4 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-neutral-800/40 text-xs font-medium text-neutral-600 dark:text-neutral-300 font-mono tracking-wide backdrop-blur-md">${pill}</span>`,
+      )
+      .join("");
+  }
+
+  // ── 3. About section ───────────────────────────────────────────────────
+  const aboutLabelEl = document.getElementById("about-label");
+  if (aboutLabelEl && data.about?.label) {
+    aboutLabelEl.textContent = data.about.label;
+  }
+
+  const aboutHeadingEl = document.getElementById("about-heading");
+  if (aboutHeadingEl && data.about?.heading) {
+    aboutHeadingEl.innerHTML = data.about.heading;
+  }
+
+  const aboutParasEl = document.getElementById("about-paragraphs");
+  if (aboutParasEl && Array.isArray(data.about?.paragraphs)) {
+    aboutParasEl.innerHTML = data.about.paragraphs
+      .map((p) => `<p>${p}</p>`)
+      .join("");
+  }
+
+  // ── 4. Experience heading & subheading ─────────────────────────────────
+  const expHeadingEl = document.getElementById("experience-heading");
+  if (expHeadingEl && data.experience?.heading) {
+    expHeadingEl.textContent = data.experience.heading;
+  }
+
+  const expSubEl = document.getElementById("experience-subheading");
+  if (expSubEl && data.experience?.subheading) {
+    expSubEl.textContent = data.experience.subheading;
+  }
+
+  // ── 5. Experience jobs ─────────────────────────────────────────────────
+  const expJobsEl = document.getElementById("experience-jobs");
+  if (expJobsEl && Array.isArray(data.experience?.jobs)) {
+    expJobsEl.innerHTML = data.experience.jobs
+      .map(
+        (job) => `
+      <div class="relative group">
+        <!-- Dot -->
+        <div class="absolute left-4 md:-left-12 top-10 w-4 h-4 -translate-x-1/2 bg-neutral-200 dark:bg-white border-2 border-white dark:border-white/20 rounded-full z-10 shadow-[0_0_15px_rgba(255,255,255,0.5)] group-hover:scale-125 transition-transform"></div>
+        <!-- Horizontal Connector -->
+        <div class="absolute left-4 md:-left-12 top-12 w-6 md:w-12 h-[2px] bg-gradient-to-r from-neutral-200 to-transparent dark:from-white dark:to-transparent"></div>
+        <!-- Card -->
+        <div class="glass-panel p-8 md:p-10 rounded-2xl border-l-2 border-l-neutral-300 dark:border-l-white/30 hover:border-l-neutral-900 dark:hover:border-l-white transition-colors relative">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-2">
+            <div>
+              <h3 class="text-xl font-bold text-neutral-900 dark:text-white">${job.title}</h3>
+              <p class="text-sm font-medium text-neutral-600 dark:text-neutral-300 mt-1">${job.company}</p>
+            </div>
+            <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-neutral-700 dark:text-white uppercase bg-neutral-100 dark:bg-white/10 rounded-full border border-neutral-200 dark:border-white/5 whitespace-nowrap">
+              ${job.period}
+            </span>
+          </div>
+          <p class="text-neutral-600 dark:text-neutral-300 text-sm mb-6">${job.summary}</p>
+          <ul class="space-y-3">
+            ${job.bullets
+              .map(
+                (b) => `
+              <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
+                <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+                ${b}
+              </li>`,
+              )
+              .join("")}
+          </ul>
+        </div>
+      </div>`,
+      )
+      .join("");
+  }
+
+  // ── 6. Featured project cards ──────────────────────────────────────────
+  const projectsGridEl = document.getElementById("projects-grid");
+  if (projectsGridEl && Array.isArray(data.projects)) {
+    const projectCards = data.projects
+      .map(
+        (proj) => `
+      <div class="glass-panel p-8 rounded-3xl flex flex-col glass-card-hover group relative overflow-hidden">
+        <!-- Gradient Overlay on Hover -->
+        <div class="absolute inset-0 bg-gradient-to-br from-neutral-100 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="flex justify-between items-start mb-6 relative z-10">
+          <div class="p-4 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-white/10 text-neutral-900 dark:text-white shadow-lg group-hover:scale-110 group-hover:shadow-xl group-hover:border-neutral-300 dark:group-hover:border-white/30 transition-all duration-300">
+            <i class="${proj.icon} text-lg"></i>
+          </div>
+          <div class="flex gap-3">
+            ${
+              proj.links?.npm
+                ? `<a href="${proj.links.npm}" class="p-2 hover:bg-neutral-200 dark:hover:bg-white/10 rounded-full transition-colors group/npm group-hover:bg-white/80 dark:group-hover:bg-white/10" title="View NPM Package">
+                <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-neutral-500 dark:text-neutral-400 group-hover/npm:text-red-500 transition-colors">
+                  <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.129z" fill="currentColor"/>
+                </svg>
+              </a>`
+                : ""
+            }
+            ${
+              proj.links?.github
+                ? `<a href="${proj.links.github}" class="p-2 hover:bg-neutral-200 dark:hover:bg-white/10 rounded-full transition-colors group-hover:bg-white/80 dark:group-hover:bg-white/10">
+                <i class="fa-brands fa-github"></i>
+              </a>`
+                : ""
+            }
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-3 relative z-10">${proj.title}</h3>
+        <p class="text-neutral-600 dark:text-neutral-300 text-sm mb-8 leading-relaxed flex-grow relative z-10">${proj.description}</p>
+
+        <div class="flex flex-wrap gap-2 relative z-10">
+          ${proj.tags
+            .map(
+              (tag) =>
+                `<span class="px-3 py-1 bg-white/50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-white/5 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-200">${tag}</span>`,
+            )
+            .join("")}
+        </div>
+      </div>`,
+      )
+      .join("");
+
+    // Always append the static "More Coming Soon" placeholder card last
+    const placeholderCard = `
+      <div class="glass-panel p-8 rounded-3xl flex flex-col justify-center items-center glass-card-hover group relative overflow-hidden border-dashed border-neutral-300 dark:border-white/10">
+        <div class="p-4 bg-neutral-100 dark:bg-neutral-900/50 rounded-full border border-neutral-200 dark:border-white/5 text-neutral-400 dark:text-neutral-500 mb-4 group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-folder-plus text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-neutral-600 dark:text-neutral-300 mb-2">More Projects Coming Soon</h3>
+        <p class="text-neutral-500 text-sm text-center">Currently working on some exciting SaaS platforms.</p>
+      </div>`;
+
+    projectsGridEl.innerHTML = projectCards + placeholderCard;
+
+    // Re-initialise tilt on newly created cards
+    initTilt();
+  }
+
+  // ── 7. Contact card ────────────────────────────────────────────────────
+  const contactHeadingEl = document.getElementById("contact-heading");
+  if (contactHeadingEl && data.contact?.heading) {
+    contactHeadingEl.textContent = data.contact.heading;
+  }
+
+  const contactSubEl = document.getElementById("contact-subheading");
+  if (contactSubEl && data.contact?.subheading) {
+    contactSubEl.textContent = data.contact.subheading;
+  }
+
+  const contactActionsEl = document.getElementById("contact-actions");
+  if (contactActionsEl && data.contact) {
+    const { email, phone, phoneHref } = data.contact;
+    contactActionsEl.innerHTML = `
+      <a href="mailto:${email}"
+        class="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-black font-bold rounded-full hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(0,0,0,0.4)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transform hover:-translate-y-1">
+        <i class="fa-solid fa-envelope text-base"></i>
+        Say Hello
+      </a>
+      <a href="${phoneHref}"
+        class="px-8 py-4 bg-transparent border border-neutral-400 dark:border-white/20 text-neutral-900 dark:text-white font-medium rounded-full hover:bg-neutral-200 dark:hover:bg-white/5 transition-all flex items-center gap-2 backdrop-blur-sm">
+        <i class="fa-solid fa-phone text-base"></i>
+        ${phone}
+      </a>`;
+  }
+
+  // ── Start Typewriter (after content is ready) ──────────────────────────
+  startTypewriter(roles);
 }
 
-// Start typing
-typeWriter();
+// ─── Typewriter Effect ─────────────────────────────────────────────────────
+const typewriterElement = document.getElementById("typewriter-text");
+
+function startTypewriter(roles) {
+  // State is scoped here so it's fresh every time (safe for async load)
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typeSpeed = 100;
+
+  function typeWriter() {
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+      typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+      typeSpeed = 50; // Faster when deleting
+    } else {
+      typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+      typeSpeed = 100; // Normal typing speed
+    }
+
+    if (!isDeleting && charIndex === currentRole.length) {
+      isDeleting = true;
+      typeSpeed = 2000; // Pause at end
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      typeSpeed = 500; // Pause before new word
+    }
+
+    setTimeout(typeWriter, typeSpeed);
+  }
+
+  typeWriter();
+}
+
+// Kick off the content load (typewriter starts inside after fetch resolves)
+loadContent();
 
 // Mobile Menu Toggle Logic (robust + touch-friendly)
 const mobileMenuBtn = document.getElementById("mobile-menu-btn");

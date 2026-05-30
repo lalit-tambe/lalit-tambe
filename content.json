@@ -1,0 +1,81 @@
+{
+  "typewriter": {
+    "words": [
+      "Full Stack Engineer",
+      "Laravel Architect",
+      "System Designer",
+      "Optimizer"
+    ]
+  },
+
+  "hero": {
+    "subheading": "Architecting & developing scalable SaaS platforms and crafting intuitive digital experiences with <strong>Laravel</strong>, <strong>Django</strong>, <strong>NodeJS</strong>, & <strong>React</strong>.",
+    "pills": [
+      "Full Stack Development",
+      "SaaS",
+      "Distributed Systems",
+      "SDLC"
+    ]
+  },
+
+  "about": {
+    "label": "Who I Am",
+    "heading": "Bridging backend complexity with <span class=\"text-neutral-500\">frontend elegance</span>.",
+    "paragraphs": [
+      "As a Full Stack Engineer, I build complete, end-to-end solutions. I excel at architecting secure, multi-tenant SaaS platforms in Laravel while also building dynamic, real-time UIs in React. My passion lies in solving complex data problems and building systems that are both reliable and efficient.",
+      "My approach is defined by full-cycle ownership, from architecting a secure RBAC system to engineering an asynchronous bulk import. I make it my goal to bridge the gap between deep backend complexity and a clean, intuitive user experience."
+    ]
+  },
+
+  "experience": {
+    "heading": "Experience",
+    "subheading": "My professional journey in software engineering.",
+    "jobs": [
+      {
+        "title": "Full Stack Engineer",
+        "company": "Insnapsys",
+        "period": "May 2021 - Present",
+        "summary": "Architecting secure, scalable solutions.",
+        "bullets": [
+          "Architected multi-tenant sync engine.",
+          "Engineered multi-layered security (RBAC/2FA).",
+          "Implemented ETL pipeline (60% faster).",
+          "Developed dynamic custom fields module.",
+          "Engineered real-time alarm dashboard.",
+          "Owned bulk data import/export (Laravel Queues)."
+        ]
+      },
+      {
+        "title": "Frontend Intern",
+        "company": "AxelBuzz",
+        "period": "Dec 2020 - May 2021",
+        "summary": "Building interactive interfaces.",
+        "bullets": [
+          "Spearheaded Survey & Quiz SPA (React/SSO).",
+          "Developed heatmaps for user data."
+        ]
+      }
+    ]
+  },
+
+  "projects": [
+    {
+      "title": "mongo-aggregate",
+      "description": "A fluent, chainable API designed to abstract complex MongoDB aggregation stages ($match, $lookup) into intuitive methods like where() and select().",
+      "icon": "fa-solid fa-database",
+      "tags": ["JavaScript", "TypeScript", "Jest"],
+      "links": {
+        "npm": "#",
+        "github": "#"
+      }
+    }
+  ],
+
+  "contact": {
+    "heading": "Let's work together",
+    "subheading": "I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+    "email": "lalittambe963@gmail.com",
+    "phone": "+91 9637820297",
+    "phoneHref": "tel:+919637820297"
+  }
+}
