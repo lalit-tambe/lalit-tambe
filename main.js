@@ -309,9 +309,14 @@ window.addEventListener("scroll", () => {
     sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
       const sectionMiddle = rect.top + rect.height / 2;
-      const distanceFromViewportMiddle = Math.abs(sectionMiddle - viewportMiddle);
+      const distanceFromViewportMiddle = Math.abs(
+        sectionMiddle - viewportMiddle,
+      );
 
-      if (currentSection === null || distanceFromViewportMiddle < currentSection.distance) {
+      if (
+        currentSection === null ||
+        distanceFromViewportMiddle < currentSection.distance
+      ) {
         currentSection = { section, distance: distanceFromViewportMiddle };
       }
     });
