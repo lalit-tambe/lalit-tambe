@@ -177,13 +177,13 @@ html:not(.dark) .glass-card-hover:hover {
   color: #b8b8b8;
 }
 
-/* Key terms — normal weight but darker, stands out from grey body */
+/* Key terms — semibold, stands out from grey body without competing with titles */
 #experience-jobs li p strong {
-  font-weight: 400;
+  font-weight: 600;
   color: #404040;
 }
 .dark #experience-jobs li p strong {
-  font-weight: 400;
+  font-weight: 600;
   color: #e5e5e5;
 }
 

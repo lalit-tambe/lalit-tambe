@@ -235,20 +235,20 @@
                 </div>
             </div>
 
-            <!-- Fixed Alignment for Arrow removed from header to avoid overlap -->
+            <!-- Down arrow — pinned to bottom of hero, always visible on screen -->
+            <div class="absolute bottom-6 left-0 right-0 flex justify-center z-10">
+                <a href="#about"
+                    class="flex justify-center animate-bounce opacity-50 cursor-pointer hover:opacity-100 transition-opacity"
+                    aria-label="Scroll to About">
+                    <div
+                        class="p-2 rounded-full border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm">
+                        <i class="fa-solid fa-chevron-down text-base text-neutral-900 dark:text-white"></i>
+                    </div>
+                </a>
+            </div>
         </header>
 
-        <!-- Down arrow (moved below hero to avoid overlap) -->
-        <div class="flex justify-center -mt-8 mb-8 z-10">
-            <a href="#about"
-                class="flex justify-center animate-bounce opacity-50 cursor-pointer hover:opacity-100 transition-opacity"
-                aria-label="Scroll to About">
-                <div
-                    class="p-2 rounded-full border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm">
-                    <i class="fa-solid fa-chevron-down text-base text-neutral-900 dark:text-white"></i>
-                </div>
-            </a>
-        </div>
+
 
         <!-- About Section -->
         <section id="about" class="py-32 px-6 relative reveal">

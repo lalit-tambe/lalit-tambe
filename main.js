@@ -204,9 +204,9 @@ async function loadContent() {
         (job) => `
       <div class="relative group">
         <!-- Dot -->
-        <div class="absolute left-4 md:-left-12 top-10 w-4 h-4 -translate-x-1/2 bg-neutral-200 dark:bg-white border-2 border-white dark:border-white/20 rounded-full z-10 shadow-[0_0_15px_rgba(255,255,255,0.5)] group-hover:scale-125 transition-transform"></div>
+        <div class="absolute -left-6 md:-left-12 top-10 w-4 h-4 -translate-x-1/2 bg-neutral-800 dark:bg-white border-2 border-neutral-100 dark:border-white/20 rounded-full z-10 shadow-[0_0_15px_rgba(0,0,0,0.3)] dark:shadow-[0_0_15px_rgba(255,255,255,0.5)] group-hover:scale-125 transition-transform"></div>
         <!-- Horizontal Connector -->
-        <div class="absolute left-4 md:-left-12 top-12 w-6 md:w-12 h-[2px] bg-gradient-to-r from-neutral-200 to-transparent dark:from-white dark:to-transparent"></div>
+        <div class="absolute -left-6 md:-left-12 top-12 w-6 md:w-12 h-[2px] bg-gradient-to-r from-neutral-200 to-transparent dark:from-white dark:to-transparent"></div>
         <!-- Card -->
         <div class="glass-panel p-8 md:p-10 rounded-2xl border-l-2 border-l-neutral-300 dark:border-l-white/30 hover:border-l-neutral-900 dark:hover:border-l-white transition-colors relative">
           <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-2">
