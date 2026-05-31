@@ -195,31 +195,183 @@ async function loadContent() {
   const compSubEl = document.getElementById("competencies-subheading");
   if (compSubEl && data.competencies?.subheading) compSubEl.textContent = data.competencies.subheading;
 
-  const compGridEl = document.getElementById("competencies-grid");
-  if (compGridEl && Array.isArray(data.competencies?.categories)) {
-    compGridEl.innerHTML = data.competencies.categories
-      .map(
-        (cat, i) => `
-      <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
-        <div class="flex items-center justify-between mb-6">
-          <div class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
-            <i class="${cat.icon} text-lg"></i>
+  const compContainer = document.getElementById("competencies-container");
+  if (compContainer && Array.isArray(data.competencies?.categories)) {
+    // Generate Left Sidebar (Categories + Mobile Accordion)
+    const categoriesHtml = data.competencies.categories.map((cat, i) => `
+      <div class="comp-accordion-group">
+        <button class="comp-cat-btn group flex items-center justify-between w-full py-6 px-4 cursor-pointer relative text-left transition-all duration-300 hover:bg-neutral-100/50 dark:hover:bg-white/[0.02]" data-index="${i}">
+          <!-- active line indicator -->
+          <div class="absolute inset-y-0 left-0 w-0 bg-gradient-to-r from-neutral-200/50 dark:from-white/5 to-transparent opacity-0 transition-all duration-300 comp-cat-bg pointer-events-none"></div>
+          <div class="w-1 h-0 bg-neutral-900 dark:bg-white absolute left-0 top-1/2 -translate-y-1/2 transition-all duration-300 comp-cat-line rounded-r-md pointer-events-none"></div>
+          
+          <div class="flex items-center gap-4 relative z-10 pointer-events-none">
+            <span class="font-mono text-sm text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors comp-cat-num">0${i + 1}</span>
+            <h3 class="text-xl md:text-2xl font-bold text-neutral-500 dark:text-neutral-500 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors comp-cat-title">${cat.title}</h3>
           </div>
-          <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">0${i + 1}</span>
+
+          <!-- Mobile arrow indicator -->
+          <i class="fa-solid fa-chevron-down text-neutral-400 transition-transform duration-300 lg:hidden comp-cat-arrow pointer-events-none"></i>
+        </button>
+        
+        <!-- Mobile Panel (Accordion) -->
+        <div class="lg:hidden overflow-hidden transition-all duration-500 max-h-0 comp-mobile-panel" data-index="${i}">
+          <div class="px-4 pb-8 pt-2">
+            <div class="flex flex-wrap gap-2">
+              ${cat.items.map((item) => `
+                <span class="px-4 py-2 rounded-full border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-neutral-900/50 text-xs font-medium text-neutral-600 dark:text-neutral-300 shadow-sm">
+                  ${item}
+                </span>
+              `).join("")}
+            </div>
+          </div>
         </div>
-        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-5">${cat.title}</h3>
-        <div class="flex flex-wrap gap-2">
-          ${cat.items
-            .map(
-              (item) =>
-                `<span class="px-3 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-neutral-800/40 text-xs font-medium text-neutral-600 dark:text-neutral-300 backdrop-blur-md">${item}</span>`,
-            )
-            .join("")}
+      </div>
+    `).join("");
+
+    // Generate Right Panel (Desktop Items)
+    const panelsHtml = data.competencies.categories.map((cat, i) => `
+      <div class="comp-panel absolute inset-0 p-8 md:p-12 transition-all duration-700 opacity-0 pointer-events-none translate-y-8 flex flex-col justify-center" data-index="${i}">
+        <i class="${cat.icon} absolute -bottom-12 -right-12 text-[15rem] text-neutral-900/[0.03] dark:text-white/[0.03] rotate-12 transition-transform duration-1000 comp-panel-icon"></i>
+        
+        <div class="relative z-10">
+            <div class="flex items-center gap-4 mb-8">
+               <div class="p-3 bg-white dark:bg-neutral-800 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.05)] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)] border border-neutral-100 dark:border-white/10">
+                 <i class="${cat.icon} text-2xl text-neutral-900 dark:text-white"></i>
+               </div>
+               <h4 class="text-3xl font-bold text-neutral-900 dark:text-white">${cat.title}</h4>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              ${cat.items.map((item, j) => `
+                <span class="comp-item px-5 py-2.5 rounded-full border border-neutral-200 dark:border-white/10 bg-white/80 dark:bg-neutral-900/80 text-sm font-medium text-neutral-700 dark:text-neutral-300 backdrop-blur-md shadow-sm transition-all duration-500 hover:scale-105 hover:bg-neutral-100 dark:hover:bg-white/10 hover:shadow-md cursor-default" style="transition-delay: ${j * 50}ms; opacity: 0; transform: translateY(15px)">
+                  ${item}
+                </span>
+              `).join("")}
+            </div>
         </div>
-      </div>`,
-      )
-      .join("");
-    initTilt();
+      </div>
+    `).join("");
+
+    compContainer.innerHTML = `
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-16">
+        <div class="w-full lg:w-2/5 flex flex-col relative z-10 border-l border-neutral-200 dark:border-white/10">
+          ${categoriesHtml}
+        </div>
+        <div class="hidden lg:block w-full lg:w-3/5 min-h-[450px]">
+          <div class="glass-panel rounded-[2.5rem] w-full h-full min-h-[450px] relative overflow-hidden group border border-neutral-200 dark:border-white/10 bg-white/30 dark:bg-neutral-900/30 shadow-lg">
+            ${panelsHtml}
+          </div>
+        </div>
+      </div>
+    `;
+
+    const btns = compContainer.querySelectorAll('.comp-cat-btn');
+    const panels = compContainer.querySelectorAll('.comp-panel');
+    const mobilePanels = compContainer.querySelectorAll('.comp-mobile-panel');
+    let activeIndex = -1;
+    
+    function activateCategory(index) {
+      const isMobile = window.innerWidth < 1024;
+      
+      // Allow toggling off on mobile
+      if (activeIndex === index && isMobile) {
+        index = -1;
+      }
+      
+      activeIndex = index;
+
+      btns.forEach((btn, i) => {
+        const line = btn.querySelector('.comp-cat-line');
+        const bg = btn.querySelector('.comp-cat-bg');
+        const title = btn.querySelector('.comp-cat-title');
+        const num = btn.querySelector('.comp-cat-num');
+        const arrow = btn.querySelector('.comp-cat-arrow');
+        
+        if (i === index) {
+          line.style.height = '60%';
+          bg.style.opacity = '1';
+          bg.style.width = '100%';
+          title.classList.remove('text-neutral-500', 'dark:text-neutral-500');
+          title.classList.add('text-neutral-900', 'dark:text-white');
+          num.classList.remove('text-neutral-400');
+          num.classList.add('text-neutral-900', 'dark:text-white');
+          if (arrow) arrow.style.transform = 'rotate(180deg)';
+        } else {
+          line.style.height = '0';
+          bg.style.opacity = '0';
+          bg.style.width = '0';
+          title.classList.add('text-neutral-500', 'dark:text-neutral-500');
+          title.classList.remove('text-neutral-900', 'dark:text-white');
+          num.classList.add('text-neutral-400');
+          num.classList.remove('text-neutral-900', 'dark:text-white');
+          if (arrow) arrow.style.transform = 'rotate(0deg)';
+        }
+      });
+      
+      // Update Mobile Panels
+      mobilePanels.forEach((mPanel, i) => {
+         if (i === index) {
+             mPanel.style.maxHeight = mPanel.scrollHeight + "px";
+         } else {
+             mPanel.style.maxHeight = "0px";
+         }
+      });
+
+      // Update Desktop Panels
+      panels.forEach((panel, i) => {
+        const items = panel.querySelectorAll('.comp-item');
+        const icon = panel.querySelector('.comp-panel-icon');
+        
+        if (i === index) {
+          panel.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-8');
+          panel.classList.add('opacity-100', 'translate-y-0');
+          
+          if(icon) {
+             icon.style.transform = 'rotate(-12deg) scale(1.1)';
+          }
+
+          items.forEach(item => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          });
+        } else {
+          panel.classList.add('opacity-0', 'pointer-events-none', 'translate-y-8');
+          panel.classList.remove('opacity-100', 'translate-y-0');
+          
+          if(icon) {
+             icon.style.transform = 'rotate(12deg) scale(1)';
+          }
+
+          items.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(15px)';
+          });
+        }
+      });
+    }
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener('click', () => activateCategory(i));
+      // Hover only activates on desktop to avoid interfering with mobile tapping
+      btn.addEventListener('mouseenter', () => {
+         if (window.innerWidth >= 1024) {
+             activateCategory(i);
+         }
+      });
+    });
+
+    // Initialize first category open
+    setTimeout(() => activateCategory(0), 100);
+
+    // Adjust max-height on resize for fluid mobile behavior
+    window.addEventListener('resize', () => {
+       if (window.innerWidth < 1024 && activeIndex !== -1) {
+          const activePanel = mobilePanels[activeIndex];
+          if(activePanel) {
+              activePanel.style.maxHeight = activePanel.scrollHeight + "px";
+          }
+       }
+    });
   }
 
   // ── 4. Experience heading & subheading ─────────────────────────────────
