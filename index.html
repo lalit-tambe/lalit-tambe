@@ -14,6 +14,13 @@
         rel="stylesheet">
 
     <!-- Tailwind CSS -->
+    <script>
+        const originalWarn = console.warn;
+        console.warn = function(...args) {
+            if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com should not be used in production')) return;
+            originalWarn.apply(console, args);
+        };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Icons: using Font Awesome via CSS only (no JS) -->
@@ -130,6 +137,8 @@
                     <span
                         class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
                 </a>
+
+
                 <a href="#contact"
                     class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
                     Contact
@@ -182,6 +191,8 @@
                 class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">Experience</a>
             <a href="#projects"
                 class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">Projects</a>
+
+
             <a href="#contact"
                 class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2">Contact</a>
             <a href="https://drive.google.com/uc?export=download&id=1oz8lQqWITc6ARf0D5TSzbh4FTT6TBPAL"
@@ -197,9 +208,9 @@
         <!-- Hero Section -->
         <header class="min-h-[85vh] flex flex-col items-center justify-center px-6 text-center relative">
 
-            <div class="space-y-3 max-w-5xl mx-auto animate-fade-up relative z-20 pb-24 md:pb-16">
+            <div class="space-y-3 max-w-5xl mx-auto animate-fade-up relative z-20 pb-16 md:pb-16">
                 <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-md text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2 shadow-lg">
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-md text-[10px] md:text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2 shadow-lg">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
                     Open for opportunities
                 </div>
@@ -216,29 +227,36 @@
                     <span class="w-0.5 h-6 md:h-8 bg-neutral-900 dark:bg-white animate-blink"></span>
                 </div>
 
+
                 <!-- Hero Subheading - injected from content.json -->
                 <p id="hero-subheading"
-                    class="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed pt-1">
+                    class="text-base md:text-xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed pt-1">
                 </p>
 
                 <!-- Expertise Pills - injected from content.json -->
-                <div id="hero-pills" class="flex flex-wrap items-center justify-center gap-3 pt-6 pb-2"></div>
+                <div id="hero-pills" class="flex flex-wrap items-center justify-center gap-2 md:gap-3 pt-6 pb-2"></div>
 
-                <div class="flex items-center justify-center gap-4 pt-4">
+                <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4 pt-4">
                     <a href="https://www.linkedin.com/in/lalittambe/" target="_blank"
-                        class="w-14 h-14 flex items-center justify-center rounded-full glass-panel text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 group hover:-translate-y-1"
+                        class="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full glass-panel text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 group hover:-translate-y-1"
                         aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        <i class="fa-brands fa-linkedin-in text-base md:text-lg"></i>
                     </a>
                     <a href="https://github.com/lalit-tambe" target="_blank"
-                        class="w-14 h-14 flex items-center justify-center rounded-full glass-panel text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 group hover:-translate-y-1"
+                        class="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full glass-panel text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 group hover:-translate-y-1"
                         aria-label="GitHub">
-                        <i class="fa-brands fa-github text-lg"></i>
+                        <i class="fa-brands fa-github text-base md:text-lg"></i>
                     </a>
                     <a href="mailto:lalittambe963@gmail.com"
-                        class="w-14 h-14 flex items-center justify-center rounded-full glass-panel text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 group hover:-translate-y-1"
+                        class="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full glass-panel text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 group hover:-translate-y-1"
                         aria-label="Email">
-                        <i class="fa-solid fa-envelope text-lg"></i>
+                        <i class="fa-solid fa-envelope text-base md:text-lg"></i>
+                    </a>
+                    
+                    <!-- Blog CTA -->
+                    <a href="https://stackknight.hashnode.dev/" target="_blank"
+                        class="h-12 px-5 md:h-14 md:px-6 flex items-center justify-center rounded-full glass-panel font-semibold text-sm md:text-base text-neutral-900 dark:text-white hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 group hover:-translate-y-1 ml-1 md:ml-2">
+                        Blog <i class="fa-solid fa-arrow-right ml-1 md:ml-2 text-xs md:text-sm transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </div>
@@ -568,6 +586,24 @@
 
                 <!-- Project cards - injected from content.json -->
                 <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            </div>
+        </section>
+
+        <!-- Blogs Section -->
+        <section id="blogs" class="py-24 px-6 reveal bg-neutral-100/50 dark:bg-white/[0.02] border-y border-neutral-200 dark:border-white/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div class="max-w-2xl">
+                        <h2 class="text-4xl font-bold text-neutral-900 dark:text-white mb-4">My Blog & Articles</h2>
+                        <p class="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed">I occasionally write about software engineering, system architecture, and developer workflows. Here are some of my recent deep-dives and technical thoughts.</p>
+                    </div>
+                    <a href="https://stackknight.hashnode.dev/" target="_blank"
+                        class="flex items-center gap-2 px-6 py-3 bg-neutral-900 dark:bg-white text-white dark:text-black font-semibold rounded-full hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all transform hover:-translate-y-1 shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.2)] whitespace-nowrap group">
+                        Visit My Blog <i class="fa-solid fa-arrow-right text-sm transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div id="writing-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
             </div>
         </section>
 

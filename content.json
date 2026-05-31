@@ -135,5 +135,21 @@
     "email": "lalittambe963@gmail.com",
     "phone": "+91 9637820297",
     "phoneHref": "tel:+919637820297"
-  }
+  },
+  "writing": [
+    {
+      "title": "Beyond the Syntax: When to Choose a Laravel Monolith over a React & Python Stack",
+      "link": "https://stackknight.hashnode.dev/beyond-the-syntax-when-to-choose-a-laravel-monolith-over-a-react-python-stack",
+      "coverImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "excerpt": "If you spend enough time in developer communities, you will eventually stumble into a framework war. Here is a breakdown of when a monolith actually makes more sense than a distributed stack.",
+      "tags": ["Laravel", "Python", "Architecture", "Monolith"]
+    },
+    {
+      "title": "Stop Memorizing Git Commands: A Guide to the DAG",
+      "link": "https://stackknight.hashnode.dev/stop-memorizing-git-commands-a-guide-to-the-dag",
+      "coverImage": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "excerpt": "It is late. You just tried to sync your feature branch with main, hit a wall of merge conflicts, and now your local environment won't even compile. If your next step is blindly pasting a git reset --hard command from a ten-year-old forum post and hoping for the best, you are flying blind.",
+      "tags": ["Git", "DAG", "Versioning"]
+    }
+  ]
 }

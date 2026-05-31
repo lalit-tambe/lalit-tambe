@@ -126,12 +126,7 @@ if (document.readyState === "loading") {
 
 // Icons are handled via Font Awesome CSS/classes only — no JS initialization required.
 
-// Console Easter Egg
-console.log(
-  "%c Hello Developer! 👋 \n%c If you're reading this, we should probably work together.",
-  "color: #fff; background: #000; padding: 10px; font-size: 20px; border-radius: 5px;",
-  "color: #aaa; font-size: 14px; padding: 5px;",
-);
+// Icons are handled via Font Awesome CSS/classes only — no JS initialization required.
 
 // ─── Content Loader ────────────────────────────────────────────────────────
 // Fetches content.json and injects all dynamic content into the DOM.
@@ -488,6 +483,41 @@ async function loadContent() {
 
     // Re-initialise tilt on newly created cards
     initTilt();
+  }
+
+  // ── 6.5. Writing articles ──────────────────────────────────────────────
+  const writingGridEl = document.getElementById("writing-grid");
+  if (writingGridEl && Array.isArray(data.writing)) {
+    writingGridEl.innerHTML = data.writing
+      .map(
+        (article) => `
+      <div class="glass-panel rounded-3xl overflow-hidden glass-card-hover group flex flex-col border border-neutral-200 dark:border-white/10 relative transition-colors duration-500 hover:border-neutral-300 dark:hover:border-white/30">
+          <a href="${article.link}" target="_blank" class="absolute inset-0 z-30"><span class="sr-only">Read ${article.title}</span></a>
+          
+          <div class="h-48 overflow-hidden relative border-b border-neutral-200 dark:border-white/5">
+             <div class="absolute inset-0 bg-neutral-900/10 dark:bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+             <img src="${article.coverImage}" alt="${article.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          </div>
+          
+          <div class="p-6 md:p-8 flex flex-col flex-grow relative z-20 bg-transparent">
+             <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">${article.title}</h3>
+             <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-6 line-clamp-3 leading-relaxed flex-grow">${article.excerpt}</p>
+             
+             <div class="flex flex-wrap gap-2 mb-6">
+                ${(article.tags || []).map(tag => `<span class="px-2 py-1 bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-md text-xs font-medium text-neutral-600 dark:text-neutral-300">${tag}</span>`).join('')}
+             </div>
+             
+             <div class="flex items-center gap-2 text-sm font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mt-auto">
+                 Read Article
+                 <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+             </div>
+          </div>
+      </div>
+      `
+      )
+      .join("");
+      
+      initTilt();
   }
 
   // ── 7. Contact card ────────────────────────────────────────────────────
@@ -942,3 +972,4 @@ window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(initOrbs, 200);
 });
+
