@@ -1,23 +1,23 @@
 {
   "typewriter": {
     "words": [
+      "Strategic Problem Solver",
       "Full Stack Engineer",
       "Laravel Architect",
       "System Designer",
       "Optimizer"
     ]
   },
-
   "hero": {
-    "subheading": "Architecting & developing scalable SaaS platforms and crafting intuitive digital experiences with <strong>Laravel</strong>, <strong>Django</strong>, <strong>NodeJS</strong>, & <strong>React</strong>.",
+    "subheading": "Engineering scalable SaaS architectures by transforming complex enterprise requirements into intelligent, user-driven systems",
     "pills": [
       "Full Stack Development",
-      "SaaS",
+      "Enterprise SaaS",
       "Distributed Systems",
-      "SDLC"
+      "Agile",
+      "Performance Optimization"
     ]
   },
-
   "about": {
     "label": "Who I Am",
     "heading": "Bridging backend complexity with <span class=\"text-neutral-500\">frontend elegance</span>.",
@@ -26,7 +26,6 @@
       "My approach is defined by full-cycle ownership, from architecting a secure RBAC system to engineering an asynchronous bulk import. I make it my goal to bridge the gap between deep backend complexity and a clean, intuitive user experience."
     ]
   },
-
   "experience": {
     "heading": "Experience",
     "subheading": "My professional journey in software engineering.",
@@ -37,12 +36,12 @@
         "period": "May 2021 - Present",
         "summary": "Architecting secure, scalable solutions.",
         "bullets": [
-          "Architected multi-tenant sync engine.",
-          "Engineered multi-layered security (RBAC/2FA).",
-          "Implemented ETL pipeline (60% faster).",
-          "Developed dynamic custom fields module.",
-          "Engineered real-time alarm dashboard.",
-          "Owned bulk data import/export (Laravel Queues)."
+          "<p><strong>Engineered an Enterprise-Grade CMDB & ETL Pipeline:</strong> Designed a versatile <strong>ETL pipeline</strong> and custom <strong>Data Connectors</strong> to continuously synchronize master configurations and ingest network inventories directly from <strong>Stablenet</strong> into a centralized <strong>Configuration Management Database</strong>, decreasing data processing time by <strong>60%</strong>.</p>",
+          "<p><strong>Implemented Multi-Layered Security & Multi-Tenancy:</strong> Engineered a <strong>schema-per-tenant</strong> data engine and robust security framework (<strong>2FA</strong>, token authentication, <strong>RBAC</strong>), achieving <strong>100% data isolation</strong> and reducing system vulnerabilities by <strong>40%</strong>.</p>",
+          "<p><strong>Architected a Custom EAV Engine & Dynamic UI Builder:</strong> Engineered a highly flexible <strong>data modeling system</strong> in <strong>Laravel</strong> allowing users to extend application schemas on the fly; dynamically rendered customized <strong>UI forms</strong> with <strong>real-time validation</strong> based on attribute types, enhancing the user's UI experience by <strong>30%</strong>.</p>",
+          "<p><strong>Owned the development of Asynchronous Bulk Data Sync Engine:</strong> Handled the end-to-end development of a heavy-duty <strong>import/export</strong> feature with granular <strong>conflict resolution</strong>; utilized <strong>Laravel queues</strong> for background processing and <strong>WebSockets</strong> for real-time tracking, reducing manual data entry time by over <strong>80%</strong> and eliminating import errors.</p>",
+          "<p><strong>Created a State-Aware Real-Time Monitoring Dashboard:</strong> Developed a full-stack <strong>Monitoring Dashboard</strong> that continuously fetches and maps <strong>Stablenet device alarms</strong> against configurable temporal thresholds; this dynamic observability decreased the <strong>Mean Time to Acknowledgment (MTTA)</strong> for critical alerts by <strong>50%</strong>.</p>",
+          "<p><strong>Developed a JSON-Driven Low-Code Engine:</strong> Built an advanced Pages and Layouts module utilizing <strong>recursive PHP functions</strong> to parse deeply nested <strong>JSON layout arrays</strong>; successfully decoupled <strong>frontend rendering from backend logic</strong>, allowing users to hot-swap complex UI structures via a <strong>one-to-many relational architecture</strong>.</p>"
         ]
       },
       {
@@ -51,26 +50,28 @@
         "period": "Dec 2020 - May 2021",
         "summary": "Building interactive interfaces.",
         "bullets": [
-          "Spearheaded Survey & Quiz SPA (React/SSO).",
-          "Developed heatmaps for user data."
+          "<p>Spearheaded the design & implementation of a <strong>Survey & Quizz</strong> web app as a <strong>single page application</strong> in <strong>ReactJs</strong>, with <strong>Single Sign On</strong> & Social authentications including <strong>Google Auth</strong>, Facebook & LinkedIn.</p>",
+          "<p>Developed <strong>heatmaps</strong> for users data, activities, user submitted surveys & responses for <strong>statistical purposes</strong> & improvising <strong>survey recommendations flow</strong>.</p>"
         ]
       }
     ]
   },
-
   "projects": [
     {
       "title": "mongo-aggregate",
       "description": "A fluent, chainable API designed to abstract complex MongoDB aggregation stages ($match, $lookup) into intuitive methods like where() and select().",
       "icon": "fa-solid fa-database",
-      "tags": ["JavaScript", "TypeScript", "Jest"],
+      "tags": [
+        "JavaScript",
+        "TypeScript",
+        "Jest"
+      ],
       "links": {
         "npm": "#",
         "github": "#"
       }
     }
   ],
-
   "contact": {
     "heading": "Let's work together",
     "subheading": "I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!",

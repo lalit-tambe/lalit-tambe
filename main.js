@@ -223,8 +223,8 @@ async function loadContent() {
             ${job.bullets
               .map(
                 (b) => `
-              <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-sm">
-                <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-1.5 shrink-0"></span>
+              <li class="flex items-start gap-3 text-neutral-600 dark:text-neutral-300 text-base leading-relaxed">
+                <span class="w-1.5 h-1.5 bg-neutral-400 dark:bg-white/40 rounded-full mt-2 shrink-0"></span>
                 ${b}
               </li>`,
               )

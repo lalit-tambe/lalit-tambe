@@ -168,3 +168,28 @@ html:not(.dark) .glass-card-hover:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Normal bullet text — slightly muted */
+#experience-jobs li p {
+  color: #5f5f5f;
+}
+.dark #experience-jobs li p {
+  color: #b8b8b8;
+}
+
+/* Key terms — normal weight but darker, stands out from grey body */
+#experience-jobs li p strong {
+  font-weight: 400;
+  color: #404040;
+}
+.dark #experience-jobs li p strong {
+  font-weight: 400;
+  color: #e5e5e5;
+}
+
+/* Bullet point titles — clearly bold, bigger than key terms */
+#experience-jobs li p > strong:first-child {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
