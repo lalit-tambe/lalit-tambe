@@ -12,10 +12,67 @@
     "subheading": "Engineering scalable SaaS architectures by transforming complex enterprise requirements into intelligent, user-driven systems",
     "pills": [
       "Full Stack Development",
+      "Backend Architecture",
       "Enterprise SaaS",
       "Distributed Systems",
+      "Workflow Automation",
+      "Data Pipelines",
+      "Web-sockets",
+      "Security Frameworks",
       "Agile",
       "Performance Optimization"
+    ]
+  },
+  "competencies": {
+    "label": "Expertise",
+    "heading": "Core Competencies",
+    "subheading": "Deep expertise across the full spectrum of system architecture.",
+    "categories": [
+      {
+        "title": "Architecture & Systems",
+        "icon": "fa-solid fa-sitemap",
+        "items": [
+          "Enterprise Configuration Management (CMDB)",
+          "Multi-Tenant Architecture",
+          "Custom EAV (Entity-Attribute-Value) Engines",
+          "Asynchronous Queues & WebSockets",
+          "Agentic AI & Workflow Automation",
+          "WebSockets & Real-Time State Management"
+        ]
+      },
+      {
+        "title": "Product & Strategy",
+        "icon": "fa-solid fa-lightbulb",
+        "items": [
+          "SaaS Product Building",
+          "PRD & KPI Definition",
+          "Dynamic UI & Form Generation",
+          "Granular Data Conflict Resolution",
+          "Low-Code Platform Engineering"
+        ]
+      },
+      {
+        "title": "Backend & Data Mastery",
+        "icon": "fa-solid fa-server",
+        "items": [
+          "Dynamic Schema Architecture (EAV)",
+          "Fluent API & Query Building",
+          "Complex Recursive Data Handling",
+          "ETL & High-Volume Data Ingestion",
+          "Advanced Regex Optimization",
+          "Database Schema Design",
+          "Real-Time Data Processing"
+        ]
+      },
+      {
+        "title": "Security & Operations",
+        "icon": "fa-solid fa-shield-halved",
+        "items": [
+          "Automated Network Observability",
+          "Role-Based Access Control (RBAC)",
+          "Data Isolation & Multi-Tenancy Security"
+        ]
+      }
     ]
   },
   "about": {

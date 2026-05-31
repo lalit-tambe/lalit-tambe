@@ -185,6 +185,43 @@ async function loadContent() {
       .join("");
   }
 
+  // ── 4. Competencies ────────────────────────────────────────────────────
+  const compLabelEl = document.getElementById("competencies-label");
+  if (compLabelEl && data.competencies?.label) compLabelEl.textContent = data.competencies.label;
+
+  const compHeadingEl = document.getElementById("competencies-heading");
+  if (compHeadingEl && data.competencies?.heading) compHeadingEl.textContent = data.competencies.heading;
+
+  const compSubEl = document.getElementById("competencies-subheading");
+  if (compSubEl && data.competencies?.subheading) compSubEl.textContent = data.competencies.subheading;
+
+  const compGridEl = document.getElementById("competencies-grid");
+  if (compGridEl && Array.isArray(data.competencies?.categories)) {
+    compGridEl.innerHTML = data.competencies.categories
+      .map(
+        (cat, i) => `
+      <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
+        <div class="flex items-center justify-between mb-6">
+          <div class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
+            <i class="${cat.icon} text-lg"></i>
+          </div>
+          <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">0${i + 1}</span>
+        </div>
+        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-5">${cat.title}</h3>
+        <div class="flex flex-wrap gap-2">
+          ${cat.items
+            .map(
+              (item) =>
+                `<span class="px-3 py-1.5 rounded-full border border-neutral-200 dark:border-white/10 bg-white/40 dark:bg-neutral-800/40 text-xs font-medium text-neutral-600 dark:text-neutral-300 backdrop-blur-md">${item}</span>`,
+            )
+            .join("")}
+        </div>
+      </div>`,
+      )
+      .join("");
+    initTilt();
+  }
+
   // ── 4. Experience heading & subheading ─────────────────────────────────
   const expHeadingEl = document.getElementById("experience-heading");
   if (expHeadingEl && data.experience?.heading) {
