@@ -182,18 +182,23 @@ async function loadContent() {
 
   // ── 4. Competencies ────────────────────────────────────────────────────
   const compLabelEl = document.getElementById("competencies-label");
-  if (compLabelEl && data.competencies?.label) compLabelEl.textContent = data.competencies.label;
+  if (compLabelEl && data.competencies?.label)
+    compLabelEl.textContent = data.competencies.label;
 
   const compHeadingEl = document.getElementById("competencies-heading");
-  if (compHeadingEl && data.competencies?.heading) compHeadingEl.textContent = data.competencies.heading;
+  if (compHeadingEl && data.competencies?.heading)
+    compHeadingEl.textContent = data.competencies.heading;
 
   const compSubEl = document.getElementById("competencies-subheading");
-  if (compSubEl && data.competencies?.subheading) compSubEl.textContent = data.competencies.subheading;
+  if (compSubEl && data.competencies?.subheading)
+    compSubEl.textContent = data.competencies.subheading;
 
   const compContainer = document.getElementById("competencies-container");
   if (compContainer && Array.isArray(data.competencies?.categories)) {
     // Generate Left Sidebar (Categories + Mobile Accordion)
-    const categoriesHtml = data.competencies.categories.map((cat, i) => `
+    const categoriesHtml = data.competencies.categories
+      .map(
+        (cat, i) => `
       <div class="comp-accordion-group">
         <button class="comp-cat-btn group flex items-center justify-between w-full py-6 px-4 cursor-pointer relative text-left transition-all duration-300 hover:bg-neutral-100/50 dark:hover:bg-white/[0.02]" data-index="${i}">
           <!-- active line indicator -->
@@ -213,19 +218,27 @@ async function loadContent() {
         <div class="lg:hidden overflow-hidden transition-all duration-500 max-h-0 comp-mobile-panel" data-index="${i}">
           <div class="px-4 pb-8 pt-2">
             <div class="flex flex-wrap gap-2">
-              ${cat.items.map((item) => `
+              ${cat.items
+                .map(
+                  (item) => `
                 <span class="px-4 py-2 rounded-full border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-neutral-900/50 text-xs font-medium text-neutral-600 dark:text-neutral-300 shadow-sm">
                   ${item}
                 </span>
-              `).join("")}
+              `,
+                )
+                .join("")}
             </div>
           </div>
         </div>
       </div>
-    `).join("");
+    `,
+      )
+      .join("");
 
     // Generate Right Panel (Desktop Items)
-    const panelsHtml = data.competencies.categories.map((cat, i) => `
+    const panelsHtml = data.competencies.categories
+      .map(
+        (cat, i) => `
       <div class="comp-panel absolute inset-0 p-8 md:p-12 transition-all duration-700 opacity-0 pointer-events-none translate-y-8 flex flex-col justify-center" data-index="${i}">
         <i class="${cat.icon} absolute -bottom-12 -right-12 text-[15rem] text-neutral-900/[0.03] dark:text-white/[0.03] rotate-12 transition-transform duration-1000 comp-panel-icon"></i>
         
@@ -237,15 +250,21 @@ async function loadContent() {
                <h4 class="text-3xl font-bold text-neutral-900 dark:text-white">${cat.title}</h4>
             </div>
             <div class="flex flex-wrap gap-3">
-              ${cat.items.map((item, j) => `
+              ${cat.items
+                .map(
+                  (item, j) => `
                 <span class="comp-item px-5 py-2.5 rounded-full border border-neutral-200 dark:border-white/10 bg-white/80 dark:bg-neutral-900/80 text-sm font-medium text-neutral-700 dark:text-neutral-300 backdrop-blur-md shadow-sm transition-all duration-500 hover:scale-105 hover:bg-neutral-100 dark:hover:bg-white/10 hover:shadow-md cursor-default" style="transition-delay: ${j * 50}ms; opacity: 0; transform: translateY(15px)">
                   ${item}
                 </span>
-              `).join("")}
+              `,
+                )
+                .join("")}
             </div>
         </div>
       </div>
-    `).join("");
+    `,
+      )
+      .join("");
 
     compContainer.innerHTML = `
       <div class="flex flex-col lg:flex-row gap-8 lg:gap-16">
@@ -260,98 +279,106 @@ async function loadContent() {
       </div>
     `;
 
-    const btns = compContainer.querySelectorAll('.comp-cat-btn');
-    const panels = compContainer.querySelectorAll('.comp-panel');
-    const mobilePanels = compContainer.querySelectorAll('.comp-mobile-panel');
+    const btns = compContainer.querySelectorAll(".comp-cat-btn");
+    const panels = compContainer.querySelectorAll(".comp-panel");
+    const mobilePanels = compContainer.querySelectorAll(".comp-mobile-panel");
     let activeIndex = -1;
-    
+
     function activateCategory(index) {
       const isMobile = window.innerWidth < 1024;
-      
+
       // Allow toggling off on mobile
       if (activeIndex === index && isMobile) {
         index = -1;
       }
-      
+
       activeIndex = index;
 
       btns.forEach((btn, i) => {
-        const line = btn.querySelector('.comp-cat-line');
-        const bg = btn.querySelector('.comp-cat-bg');
-        const title = btn.querySelector('.comp-cat-title');
-        const num = btn.querySelector('.comp-cat-num');
-        const arrow = btn.querySelector('.comp-cat-arrow');
-        
+        const line = btn.querySelector(".comp-cat-line");
+        const bg = btn.querySelector(".comp-cat-bg");
+        const title = btn.querySelector(".comp-cat-title");
+        const num = btn.querySelector(".comp-cat-num");
+        const arrow = btn.querySelector(".comp-cat-arrow");
+
         if (i === index) {
-          line.style.height = '60%';
-          bg.style.opacity = '1';
-          bg.style.width = '100%';
-          title.classList.remove('text-neutral-500', 'dark:text-neutral-500');
-          title.classList.add('text-neutral-900', 'dark:text-white');
-          num.classList.remove('text-neutral-400');
-          num.classList.add('text-neutral-900', 'dark:text-white');
-          if (arrow) arrow.style.transform = 'rotate(180deg)';
+          line.style.height = "60%";
+          bg.style.opacity = "1";
+          bg.style.width = "100%";
+          title.classList.remove("text-neutral-500", "dark:text-neutral-500");
+          title.classList.add("text-neutral-900", "dark:text-white");
+          num.classList.remove("text-neutral-400");
+          num.classList.add("text-neutral-900", "dark:text-white");
+          if (arrow) arrow.style.transform = "rotate(180deg)";
         } else {
-          line.style.height = '0';
-          bg.style.opacity = '0';
-          bg.style.width = '0';
-          title.classList.add('text-neutral-500', 'dark:text-neutral-500');
-          title.classList.remove('text-neutral-900', 'dark:text-white');
-          num.classList.add('text-neutral-400');
-          num.classList.remove('text-neutral-900', 'dark:text-white');
-          if (arrow) arrow.style.transform = 'rotate(0deg)';
+          line.style.height = "0";
+          bg.style.opacity = "0";
+          bg.style.width = "0";
+          title.classList.add("text-neutral-500", "dark:text-neutral-500");
+          title.classList.remove("text-neutral-900", "dark:text-white");
+          num.classList.add("text-neutral-400");
+          num.classList.remove("text-neutral-900", "dark:text-white");
+          if (arrow) arrow.style.transform = "rotate(0deg)";
         }
       });
-      
+
       // Update Mobile Panels
       mobilePanels.forEach((mPanel, i) => {
-         if (i === index) {
-             mPanel.style.maxHeight = mPanel.scrollHeight + "px";
-         } else {
-             mPanel.style.maxHeight = "0px";
-         }
+        if (i === index) {
+          mPanel.style.maxHeight = mPanel.scrollHeight + "px";
+        } else {
+          mPanel.style.maxHeight = "0px";
+        }
       });
 
       // Update Desktop Panels
       panels.forEach((panel, i) => {
-        const items = panel.querySelectorAll('.comp-item');
-        const icon = panel.querySelector('.comp-panel-icon');
-        
+        const items = panel.querySelectorAll(".comp-item");
+        const icon = panel.querySelector(".comp-panel-icon");
+
         if (i === index) {
-          panel.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-8');
-          panel.classList.add('opacity-100', 'translate-y-0');
-          
-          if(icon) {
-             icon.style.transform = 'rotate(-12deg) scale(1.1)';
+          panel.classList.remove(
+            "opacity-0",
+            "pointer-events-none",
+            "translate-y-8",
+          );
+          panel.classList.add("opacity-100", "translate-y-0");
+
+          if (icon) {
+            icon.style.transform = "rotate(-12deg) scale(1.1)";
           }
 
-          items.forEach(item => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
+          items.forEach((item) => {
+            item.style.opacity = "1";
+            item.style.transform = "translateY(0)";
           });
         } else {
-          panel.classList.add('opacity-0', 'pointer-events-none', 'translate-y-8');
-          panel.classList.remove('opacity-100', 'translate-y-0');
-          
-          if(icon) {
-             icon.style.transform = 'rotate(12deg) scale(1)';
+          panel.classList.add(
+            "opacity-0",
+            "pointer-events-none",
+            "translate-y-8",
+          );
+          panel.classList.remove("opacity-100", "translate-y-0");
+
+          if (icon) {
+            icon.style.transform = "rotate(12deg) scale(1)";
           }
 
-          items.forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(15px)';
+          items.forEach((item) => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(15px)";
           });
         }
       });
     }
 
     btns.forEach((btn, i) => {
-      btn.addEventListener('click', () => activateCategory(i));
+      btn.addEventListener("click", () => activateCategory(i));
       // Hover only activates on desktop to avoid interfering with mobile tapping
-      btn.addEventListener('mouseenter', () => {
-         if (window.innerWidth >= 1024) {
-             activateCategory(i);
-         }
+      btn.addEventListener("mouseenter", () => {
+        if (window.innerWidth >= 1024) {
+          activateCategory(i);
+        }
       });
     });
 
@@ -359,13 +386,13 @@ async function loadContent() {
     setTimeout(() => activateCategory(0), 100);
 
     // Adjust max-height on resize for fluid mobile behavior
-    window.addEventListener('resize', () => {
-       if (window.innerWidth < 1024 && activeIndex !== -1) {
-          const activePanel = mobilePanels[activeIndex];
-          if(activePanel) {
-              activePanel.style.maxHeight = activePanel.scrollHeight + "px";
-          }
-       }
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 1024 && activeIndex !== -1) {
+        const activePanel = mobilePanels[activeIndex];
+        if (activePanel) {
+          activePanel.style.maxHeight = activePanel.scrollHeight + "px";
+        }
+      }
     });
   }
 
@@ -504,7 +531,7 @@ async function loadContent() {
              <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-6 line-clamp-3 leading-relaxed flex-grow">${article.excerpt}</p>
              
              <div class="flex flex-wrap gap-2 mb-6">
-                ${(article.tags || []).map(tag => `<span class="px-2 py-1 bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-md text-xs font-medium text-neutral-600 dark:text-neutral-300">${tag}</span>`).join('')}
+                ${(article.tags || []).map((tag) => `<span class="px-2 py-1 bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-md text-xs font-medium text-neutral-600 dark:text-neutral-300">${tag}</span>`).join("")}
              </div>
              
              <div class="flex items-center gap-2 text-sm font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mt-auto">
@@ -513,11 +540,11 @@ async function loadContent() {
              </div>
           </div>
       </div>
-      `
+      `,
       )
       .join("");
-      
-      initTilt();
+
+    initTilt();
   }
 
   // ── 7. Contact card ────────────────────────────────────────────────────
@@ -722,52 +749,57 @@ window.addEventListener("scroll", () => {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
 
-  function updateActiveLink() {
-    let currentSection = null;
-    const viewportMiddle = window.innerHeight / 2;
+  function updateActiveLink(targetHref = null) {
+    let activeHref = targetHref;
 
-    // Find which section is closest to the viewport middle
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      const sectionMiddle = rect.top + rect.height / 2;
-      const distanceFromViewportMiddle = Math.abs(
-        sectionMiddle - viewportMiddle,
-      );
+    // If no target href provided, find based on scroll position
+    if (!activeHref) {
+      let currentSection = null;
+      const viewportMiddle = window.innerHeight / 2;
 
-      if (
-        currentSection === null ||
-        distanceFromViewportMiddle < currentSection.distance
-      ) {
-        currentSection = { section, distance: distanceFromViewportMiddle };
-      }
-    });
+      // Find which section is closest to the viewport middle
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const sectionMiddle = rect.top + rect.height / 2;
+        const distanceFromViewportMiddle = Math.abs(
+          sectionMiddle - viewportMiddle,
+        );
 
-    // Update active state
+        if (
+          currentSection === null ||
+          distanceFromViewportMiddle < currentSection.distance
+        ) {
+          currentSection = { section, distance: distanceFromViewportMiddle };
+        }
+      });
+
+      activeHref = currentSection ? `#${currentSection.section.id}` : null;
+    }
+
+    // Update active state for all nav links
     navLinks.forEach((link) => {
-      link.classList.remove("active");
       const href = link.getAttribute("href");
+      const isActive = href === activeHref;
 
-      if (currentSection && href === `#${currentSection.section.id}`) {
+      if (isActive) {
         link.classList.add("active");
-        link.style.color = "currentColor";
-        link.style.fontWeight = "500";
-
-        // Add underline effect
-        const underline = link.querySelector("span");
-        if (underline) {
-          underline.style.width = "100%";
-        }
       } else {
-        link.style.fontWeight = "400";
-        const underline = link.querySelector("span");
-        if (underline) {
-          underline.style.width = "0";
-        }
+        link.classList.remove("active");
       }
     });
   }
 
-  window.addEventListener("scroll", updateActiveLink, { passive: true });
+  // Update on scroll
+  window.addEventListener("scroll", () => updateActiveLink(), { passive: true });
+
+  // Update immediately when a nav link is clicked
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const href = link.getAttribute("href");
+      updateActiveLink(href);
+    });
+  });
+
   updateActiveLink(); // Call on initial load
 })();
 
@@ -972,4 +1004,3 @@ window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(initOrbs, 200);
 });
-

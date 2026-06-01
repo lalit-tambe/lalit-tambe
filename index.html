@@ -93,69 +93,86 @@
     </div>
 
     <!-- Navigation - Floating Card Style -->
-    <nav class="fixed top-4 left-0 right-0 mx-auto w-[92%] max-w-5xl z-50 glass-nav rounded-2xl transition-all duration-300"
-        id="navbar">
-        <div class="px-6 h-14 md:h-16 flex items-center justify-between">
+    <nav class="fixed top-4 left-0 right-0 mx-auto w-[92%] max-w-5xl z-50 glass-nav rounded-2xl transition-all duration-300" id="navbar" style="--nav-progress-scale: 0;">
+        <div class="px-6 h-14 md:h-16 flex items-center items-stretch justify-between">
             <!-- Logo -->
-            <a href="#"
-                class="text-neutral-900 dark:text-white font-mono text-xl tracking-tight hover:opacity-80 transition-opacity flex items-center gap-2">
-                <div
-                    class="w-2 h-2 bg-neutral-900 dark:bg-white rounded-full shadow-[0_0_10px_rgba(0,0,0,0.2)] dark:shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+            <a href="#" class="text-neutral-900 dark:text-white font-mono text-xl tracking-tight hover:opacity-80 transition-opacity flex items-center gap-2">
+                <div class="w-2 h-2 bg-neutral-900 dark:bg-white rounded-full shadow-[0_0_10px_rgba(0,0,0,0.2)] dark:shadow-[0_0_10px_rgba(255,255,255,0.8)]">
                 </div>
                 &lt;Lalit Tambe /&gt;
             </a>
 
             <!-- Desktop Links -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about"
-                    class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+            <div class="hidden md:flex items-center space-x-8 h-full">
+                <!-- ACTIVE LINK -->
+                <a href="#about" class="h-full flex items-center text-sm font-normal text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group active">
                     About
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                    
+                    <!-- Top Glowing Indicator -->
+                    <span class="nav-indicator absolute top-0 left-1/2 -translate-x-1/2 w-[30px] h-[3px] bg-neutral-900 dark:bg-white rounded-b-sm shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    
+                    <!-- Spotlight Gradient (Light Beam) -->
+                    <span class="nav-spotlight absolute top-0 left-1/2 -translate-x-1/2 w-[120%] min-w-[60px] h-full bg-gradient-to-b from-black/10 dark:from-white/15 to-transparent [clip-path:polygon(30%_0,70%_0,100%_100%,0%_100%)] -z-10 pointer-events-none"></span>
                 </a>
-                <a href="#competencies"
-                    class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+
+                <!-- INACTIVE LINKS -->
+                <a href="#competencies" class="h-full flex items-center text-sm font-normal text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
                     Competencies
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                    
+                    <!-- Top Glowing Indicator -->
+                    <span class="nav-indicator absolute top-0 left-1/2 -translate-x-1/2 w-[30px] h-[3px] bg-neutral-900 dark:bg-white rounded-b-sm shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    
+                    <!-- Spotlight Gradient (Light Beam) -->
+                    <span class="nav-spotlight absolute top-0 left-1/2 -translate-x-1/2 w-[120%] min-w-[60px] h-full bg-gradient-to-b from-black/10 dark:from-white/15 to-transparent [clip-path:polygon(30%_0,70%_0,100%_100%,0%_100%)] -z-10 pointer-events-none"></span>
                 </a>
-                <a href="#skills"
-                    class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+                
+                <a href="#skills" class="h-full flex items-center text-sm font-normal text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
                     Skills
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                    
+                    <!-- Top Glowing Indicator -->
+                    <span class="nav-indicator absolute top-0 left-1/2 -translate-x-1/2 w-[30px] h-[3px] bg-neutral-900 dark:bg-white rounded-b-sm shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    
+                    <!-- Spotlight Gradient (Light Beam) -->
+                    <span class="nav-spotlight absolute top-0 left-1/2 -translate-x-1/2 w-[120%] min-w-[60px] h-full bg-gradient-to-b from-black/10 dark:from-white/15 to-transparent [clip-path:polygon(30%_0,70%_0,100%_100%,0%_100%)] -z-10 pointer-events-none"></span>
                 </a>
-                <a href="#experience"
-                    class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+                
+                <a href="#experience" class="h-full flex items-center text-sm font-normal text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
                     Experience
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                    
+                    <!-- Top Glowing Indicator -->
+                    <span class="nav-indicator absolute top-0 left-1/2 -translate-x-1/2 w-[30px] h-[3px] bg-neutral-900 dark:bg-white rounded-b-sm shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    
+                    <!-- Spotlight Gradient (Light Beam) -->
+                    <span class="nav-spotlight absolute top-0 left-1/2 -translate-x-1/2 w-[120%] min-w-[60px] h-full bg-gradient-to-b from-black/10 dark:from-white/15 to-transparent [clip-path:polygon(30%_0,70%_0,100%_100%,0%_100%)] -z-10 pointer-events-none"></span>
                 </a>
-                <a href="#projects"
-                    class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+                
+                <a href="#projects" class="h-full flex items-center text-sm font-normal text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
                     Projects
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                    
+                    <!-- Top Glowing Indicator -->
+                    <span class="nav-indicator absolute top-0 left-1/2 -translate-x-1/2 w-[30px] h-[3px] bg-neutral-900 dark:bg-white rounded-b-sm shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    
+                    <!-- Spotlight Gradient (Light Beam) -->
+                    <span class="nav-spotlight absolute top-0 left-1/2 -translate-x-1/2 w-[120%] min-w-[60px] h-full bg-gradient-to-b from-black/10 dark:from-white/15 to-transparent [clip-path:polygon(30%_0,70%_0,100%_100%,0%_100%)] -z-10 pointer-events-none"></span>
                 </a>
 
-
-                <a href="#contact"
-                    class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
+                <a href="#contact" class="h-full flex items-center text-sm font-normal text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors relative group">
                     Contact
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-[1px] bg-neutral-900 dark:bg-white transition-all group-hover:w-full"></span>
+                    
+                    <!-- Top Glowing Indicator -->
+                    <span class="nav-indicator absolute top-0 left-1/2 -translate-x-1/2 w-[30px] h-[3px] bg-neutral-900 dark:bg-white rounded-b-sm shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    
+                    <!-- Spotlight Gradient (Light Beam) -->
+                    <span class="nav-spotlight absolute top-0 left-1/2 -translate-x-1/2 w-[120%] min-w-[60px] h-full bg-gradient-to-b from-black/10 dark:from-white/15 to-transparent [clip-path:polygon(30%_0,70%_0,100%_100%,0%_100%)] -z-10 pointer-events-none"></span>
                 </a>
 
-                <a href="https://drive.google.com/uc?export=download&id=1oz8lQqWITc6ARf0D5TSzbh4FTT6TBPAL"
-                    class="px-5 py-2 text-sm font-medium text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/10 rounded-full hover:bg-neutral-100 dark:hover:bg-white/5 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm">
+                <a href="https://drive.google.com/uc?export=download&amp;id=1oz8lQqWITc6ARf0D5TSzbh4FTT6TBPAL" class="self-center px-5 py-2 text-sm font-medium text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/10 rounded-full hover:bg-neutral-100 dark:hover:bg-white/5 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm">
                     <span>Resume</span>
                     <i class="fa-solid fa-download text-sm"></i>
                 </a>
 
                 <!-- Theme Toggle Button (Desktop) -->
-                <button
-                    class="theme-toggle p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors focus:outline-none"
-                    aria-label="Toggle Theme">
+                <button class="self-center theme-toggle p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Theme">
                     <i class="fa-solid fa-sun text-base hidden dark:block text-yellow-300"></i>
                     <i class="fa-solid fa-moon text-base block dark:hidden text-neutral-700"></i>
                 </button>
@@ -164,39 +181,28 @@
             <!-- Mobile Controls -->
             <div class="flex items-center gap-4 md:hidden">
                 <!-- Theme Toggle Button (Mobile) -->
-                <button
-                    class="theme-toggle p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors focus:outline-none"
-                    aria-label="Toggle Theme">
+                <button class="theme-toggle p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Theme">
                     <i class="fa-solid fa-sun text-base hidden dark:block text-yellow-300"></i>
                     <i class="fa-solid fa-moon text-base block dark:hidden text-neutral-700"></i>
                 </button>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="text-neutral-900 dark:text-white focus:outline-none">
+                <button id="mobile-menu-btn" class="text-neutral-900 dark:text-white focus:outline-none" style="touch-action: manipulation; cursor: pointer; z-index: 9999;">
                     <i class="fa-solid fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu"
-            class="hidden md:hidden absolute top-full left-0 w-full mt-2 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border border-neutral-200 dark:border-white/10 rounded-xl p-6 flex flex-col space-y-4 shadow-2xl overflow-hidden">
-            <a href="#about"
-                class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">About</a>
-            <a href="#competencies"
-                class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">Competencies</a>
-            <a href="#skills"
-                class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">Skills</a>
-            <a href="#experience"
-                class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">Experience</a>
-            <a href="#projects"
-                class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5">Projects</a>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full mt-2 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl border border-neutral-200 dark:border-white/10 rounded-xl p-6 flex flex-col space-y-4 shadow-2xl overflow-hidden" style="z-index: 9998;">
+            <a href="#about" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5 active" style="color: currentcolor; font-weight: 500;">About</a>
+            <a href="#competencies" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5" style="font-weight: 400;">Competencies</a>
+            <a href="#skills" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5" style="font-weight: 400;">Skills</a>
+            <a href="#experience" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5" style="font-weight: 400;">Experience</a>
+            <a href="#projects" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2 border-b border-neutral-200 dark:border-white/5" style="font-weight: 400;">Projects</a>
 
-
-            <a href="#contact"
-                class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2">Contact</a>
-            <a href="https://drive.google.com/uc?export=download&id=1oz8lQqWITc6ARf0D5TSzbh4FTT6TBPAL"
-                class="mt-4 px-5 py-3 text-center font-medium text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/20 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 transition-all block">
+            <a href="#contact" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white block py-2" style="font-weight: 400;">Contact</a>
+            <a href="https://drive.google.com/uc?export=download&amp;id=1oz8lQqWITc6ARf0D5TSzbh4FTT6TBPAL" class="mt-4 px-5 py-3 text-center font-medium text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/20 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 transition-all block">
                 Download Resume
             </a>
         </div>

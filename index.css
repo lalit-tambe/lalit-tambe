@@ -193,3 +193,28 @@ html:not(.dark) .glass-card-hover:hover {
   font-weight: 700;
 }
 
+/* Navigation Link Active State */
+a[href^="#"]:not([href="#"]) .nav-indicator,
+a[href^="#"]:not([href="#"]) .nav-spotlight {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 300ms ease,
+    visibility 300ms ease;
+}
+
+a[href^="#"]:not([href="#"]).active .nav-indicator,
+a[href^="#"]:not([href="#"]).active .nav-spotlight {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Active link text and font styling */
+a[href^="#"]:not([href="#"]).active {
+  color: rgb(23 23 23 / 1) !important;
+  font-weight: 500 !important;
+}
+
+.dark a[href^="#"]:not([href="#"]).active {
+  color: rgb(255 255 255 / 1) !important;
+}
