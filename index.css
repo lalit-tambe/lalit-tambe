@@ -194,8 +194,8 @@ html:not(.dark) .glass-card-hover:hover {
 }
 
 /* Navigation Link Active State */
-a[href^="#"]:not([href="#"]) .nav-indicator,
-a[href^="#"]:not([href="#"]) .nav-spotlight {
+a[href^="#"] .nav-indicator,
+a[href^="#"] .nav-spotlight {
   opacity: 0;
   visibility: hidden;
   transition:
@@ -203,18 +203,18 @@ a[href^="#"]:not([href="#"]) .nav-spotlight {
     visibility 300ms ease;
 }
 
-a[href^="#"]:not([href="#"]).active .nav-indicator,
-a[href^="#"]:not([href="#"]).active .nav-spotlight {
+a[href^="#"].active .nav-indicator,
+a[href^="#"].active .nav-spotlight {
   opacity: 1;
   visibility: visible;
 }
 
 /* Active link text and font styling */
-a[href^="#"]:not([href="#"]).active {
+a[href^="#"].active {
   color: rgb(23 23 23 / 1) !important;
   font-weight: 500 !important;
 }
 
-.dark a[href^="#"]:not([href="#"]).active {
+.dark a[href^="#"].active {
   color: rgb(255 255 255 / 1) !important;
 }

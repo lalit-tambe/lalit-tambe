@@ -746,8 +746,8 @@ window.addEventListener("scroll", () => {
 
 // Active Navbar Link Styling
 (function () {
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+  const sections = document.querySelectorAll("header, section[id]");
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
 
   function updateActiveLink(targetHref = null) {
     let activeHref = targetHref;
@@ -773,7 +773,7 @@ window.addEventListener("scroll", () => {
         }
       });
 
-      activeHref = currentSection ? `#${currentSection.section.id}` : null;
+      activeHref = currentSection ? (currentSection.section.tagName.toLowerCase() === 'header' ? '#' : `#${currentSection.section.id}`) : null;
     }
 
     // Update active state for all nav links
