@@ -364,196 +364,163 @@
                     <div class="w-full md:w-1/3 h-[1px] bg-neutral-200 dark:bg-white/10"></div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Category: Languages -->
-                    <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
-                        <div class="flex items-center justify-between mb-8">
-                            <div
-                                class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
-                                <i class="fa-solid fa-code text-lg"></i>
+                <div class="relative max-w-4xl mx-auto mb-16 group z-10">
+                    <!-- Glowing backdrop -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-neutral-200 via-neutral-100 to-neutral-200 dark:from-neutral-800 dark:via-neutral-900 dark:to-neutral-800 rounded-[2rem] blur-xl opacity-40 group-hover:opacity-60 transition duration-1000"></div>
+                    
+                    <!-- Code Editor -->
+                    <div class="relative glass-panel rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.08)] dark:shadow-[0_0_30px_rgba(255,255,255,0.08)] group-hover:shadow-[0_0_45px_rgba(0,0,0,0.12)] dark:group-hover:shadow-[0_0_45px_rgba(255,255,255,0.12)] transition-shadow duration-700 glass-card-hover">
+                        <!-- Window Controls -->
+                        <div class="flex items-center gap-2 px-5 py-4 bg-neutral-100/50 dark:bg-white/5 border-b border-neutral-200/50 dark:border-white/5">
+                            <div class="flex gap-2">
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-[0_0_10px_rgba(255,95,86,0.5)]"></div>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-[0_0_10px_rgba(255,189,46,0.5)]"></div>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-[0_0_10px_rgba(39,201,63,0.5)]"></div>
                             </div>
-                            <span
-                                class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">01</span>
+                            <div class="ml-6 flex gap-6 text-sm font-mono text-neutral-500">
+                                <span class="text-neutral-900 dark:text-white font-semibold border-b-2 border-neutral-900 dark:border-white pb-1 flex items-center gap-2">
+                                    <i class="fa-solid fa-code text-xs"></i> arsenal.ts
+                                </span>
+                                <span class="hover:text-neutral-700 dark:hover:text-neutral-300 cursor-pointer flex items-center gap-2 transition-colors">
+                                    <i class="fa-solid fa-terminal text-xs"></i> config.json
+                                </span>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">Languages</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <!-- PHP -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-php-plain text-lg"></i>
-                                PHP
-                            </span>
-                            <!-- Python -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-python-plain text-lg"></i>
-                                Python
-                            </span>
-                            <!-- JavaScript -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-javascript-plain text-lg"></i>
-                                JavaScript
-                            </span>
-                            <!-- TypeScript -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-typescript-plain text-lg"></i>
-                                TypeScript
-                            </span>
-                            <!-- Bash -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-bash-plain text-lg"></i>
-                                Bash
-                            </span>
-                            <!-- HTML5 -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-html5-plain text-lg"></i>
-                                HTML5
-                            </span>
-                            <!-- CSS -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-css3-plain text-lg"></i>
-                                CSS
-                            </span>
+                        
+                        <!-- Editor Content -->
+                        <div class="p-6 md:p-8 font-mono text-sm md:text-[15px] overflow-x-auto bg-transparent leading-loose">
+                            <pre><code class="language-typescript text-neutral-800 dark:text-neutral-300">
+<span class="text-purple-600 dark:text-purple-400 font-semibold">import</span> { <span class="text-yellow-600 dark:text-yellow-200">DeveloperSkills</span> } <span class="text-purple-600 dark:text-purple-400 font-semibold">from</span> <span class="text-green-600 dark:text-green-400">'./experience'</span>;
+
+<span class="text-blue-600 dark:text-blue-400 font-semibold">const</span> <span class="text-neutral-900 dark:text-white font-bold">technicalArsenal</span>: <span class="text-yellow-600 dark:text-yellow-200">DeveloperSkills</span> = {
+    <span class="text-rose-500 dark:text-rose-400">languages</span>: [<span class="text-green-600 dark:text-green-400">"PHP"</span>, <span class="text-green-600 dark:text-green-400">"Python"</span>, <span class="text-green-600 dark:text-green-400">"JavaScript"</span>, <span class="text-green-600 dark:text-green-400">"TypeScript"</span>, <span class="text-green-600 dark:text-green-400">"Bash"</span>],
+    <span class="text-rose-500 dark:text-rose-400">frameworks</span>: [<span class="text-green-600 dark:text-green-400">"Laravel"</span>, <span class="text-green-600 dark:text-green-400">"Django"</span>, <span class="text-green-600 dark:text-green-400">"React"</span>, <span class="text-green-600 dark:text-green-400">"NodeJS"</span>, <span class="text-green-600 dark:text-green-400">"Livewire"</span>],
+    <span class="text-rose-500 dark:text-rose-400">databases</span>: [<span class="text-green-600 dark:text-green-400">"MySQL"</span>, <span class="text-green-600 dark:text-green-400">"PostgreSQL"</span>, <span class="text-green-600 dark:text-green-400">"MongoDB"</span>, <span class="text-green-600 dark:text-green-400">"SQL Server"</span>],
+    <span class="text-rose-500 dark:text-rose-400">tools</span>: [<span class="text-green-600 dark:text-green-400">"Git"</span>, <span class="text-green-600 dark:text-green-400">"Docker"</span>, <span class="text-green-600 dark:text-green-400">"Postman"</span>, <span class="text-green-600 dark:text-green-400">"CI/CD Actions"</span>]
+};
+
+<span class="text-purple-600 dark:text-purple-400 font-semibold">export default</span> <span class="text-neutral-900 dark:text-white font-bold">technicalArsenal</span>;
+                            </code></pre>
                         </div>
                     </div>
-
-                    <!-- Category: Frameworks -->
-                    <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
-                        <div class="flex items-center justify-between mb-8">
-                            <div
-                                class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
-                                <i class="fa-solid fa-layer-group text-lg"></i>
+                </div>
+                
+                <!-- Infinite Marquees -->
+                <div class="relative w-full overflow-hidden marquee-container space-y-6 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] pt-4 pb-12 z-0">
+                    
+                    <!-- Row 1: Left -->
+                    <div class="animate-marquee-left gap-6">
+                        <!-- Set 1 -->
+                        <div class="flex gap-6 pr-6">
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-php-plain text-3xl"></i><span class="font-bold">PHP</span>
                             </div>
-                            <span
-                                class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">02</span>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-laravel-plain text-3xl"></i><span class="font-bold">Laravel</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-mysql-plain text-3xl"></i><span class="font-bold">MySQL</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-git-plain text-3xl"></i><span class="font-bold">Git</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-python-plain text-3xl"></i><span class="font-bold">Python</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-django-plain text-3xl"></i><span class="font-bold">Django</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-postgresql-plain text-3xl"></i><span class="font-bold">PostgreSQL</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-bash-plain text-3xl"></i><span class="font-bold">Bash</span>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">Frameworks</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <!-- Laravel -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-laravel-plain text-lg"></i>
-                                Laravel
-                            </span>
-                            <!-- Django -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-django-plain text-lg"></i>
-                                Django
-                            </span>
-                            <!-- React -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-react-original text-lg"></i>
-                                ReactJs
-                            </span>
-                            <!-- NodeJS -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-nodejs-plain text-lg"></i>
-                                NodeJS
-                            </span>
-                            <!-- Express -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-express-original text-lg"></i>
-                                Express.js
-                            </span>
-                            <!-- Livewire -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="fa-solid fa-bolt text-sm"></i>
-                                Livewire
-                            </span>
-                            <!-- Alpine -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="fa-solid fa-mountain text-sm"></i>
-                                AlpineJS
-                            </span>
+                        <!-- Set 2 -->
+                        <div class="flex gap-6 pr-6">
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-php-plain text-3xl"></i><span class="font-bold">PHP</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-laravel-plain text-3xl"></i><span class="font-bold">Laravel</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-mysql-plain text-3xl"></i><span class="font-bold">MySQL</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-git-plain text-3xl"></i><span class="font-bold">Git</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-python-plain text-3xl"></i><span class="font-bold">Python</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-django-plain text-3xl"></i><span class="font-bold">Django</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-postgresql-plain text-3xl"></i><span class="font-bold">PostgreSQL</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-bash-plain text-3xl"></i><span class="font-bold">Bash</span>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Category: Databases -->
-                    <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
-                        <div class="flex items-center justify-between mb-8">
-                            <div
-                                class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
-                                <i class="fa-solid fa-database text-lg"></i>
+                
+                    <!-- Row 2: Right -->
+                    <div class="animate-marquee-right gap-6">
+                        <!-- Set 1 -->
+                        <div class="flex gap-6 pr-6">
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-javascript-plain text-3xl"></i><span class="font-bold">JavaScript</span>
                             </div>
-                            <span
-                                class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">03</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">Databases</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <!-- MySQL -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-mysql-plain text-lg"></i>
-                                MySQL
-                            </span>
-                            <!-- PostgreSQL -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-postgresql-plain text-lg"></i>
-                                PostgreSQL
-                            </span>
-                            <!-- MongoDB -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-mongodb-plain text-lg"></i>
-                                MongoDB
-                            </span>
-                            <!-- SQL Server -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-microsoftsqlserver-plain text-lg"></i>
-                                SQL Server
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Category: Tools -->
-                    <div class="glass-panel p-8 rounded-2xl glass-card-hover group">
-                        <div class="flex items-center justify-between mb-8">
-                            <div
-                                class="p-3 bg-neutral-100 dark:bg-white/5 rounded-lg text-neutral-900 dark:text-white group-hover:bg-neutral-200 dark:group-hover:bg-white/10 transition-colors">
-                                <i class="fa-solid fa-wrench text-lg"></i>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-react-original text-3xl"></i><span class="font-bold">ReactJs</span>
                             </div>
-                            <span
-                                class="text-xs font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">04</span>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-mongodb-plain text-3xl"></i><span class="font-bold">MongoDB</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-postman-plain text-3xl"></i><span class="font-bold">Postman</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-typescript-plain text-3xl"></i><span class="font-bold">TypeScript</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-nodejs-plain text-3xl"></i><span class="font-bold">NodeJS</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-docker-plain text-3xl"></i><span class="font-bold">Docker</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-css3-plain text-3xl"></i><span class="font-bold">CSS3</span>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">Tools</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <!-- Git -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-git-plain text-lg"></i>
-                                Git
-                            </span>
-                            <!-- Docker -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-docker-plain text-lg"></i>
-                                Docker
-                            </span>
-                            <!-- Postman -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-postman-plain text-lg"></i>
-                                Postman
-                            </span>
-                            <!-- CI/CD -->
-                            <span
-                                class="px-4 py-2 bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/5 rounded-md text-sm text-neutral-600 dark:text-neutral-300 group-hover:border-neutral-300 dark:group-hover:border-white/20 group-hover:text-neutral-900 dark:group-hover:text-white transition-all flex items-center gap-2">
-                                <i class="devicon-githubactions-plain text-lg"></i>
-                                CI/CD
-                            </span>
+                        <!-- Set 2 -->
+                        <div class="flex gap-6 pr-6">
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-javascript-plain text-3xl"></i><span class="font-bold">JavaScript</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-react-original text-3xl"></i><span class="font-bold">ReactJs</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-mongodb-plain text-3xl"></i><span class="font-bold">MongoDB</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-postman-plain text-3xl"></i><span class="font-bold">Postman</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-typescript-plain text-3xl"></i><span class="font-bold">TypeScript</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-nodejs-plain text-3xl"></i><span class="font-bold">NodeJS</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-docker-plain text-3xl"></i><span class="font-bold">Docker</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-6 py-4 glass-panel rounded-2xl hover:bg-white dark:hover:bg-neutral-800 hover:-translate-y-1 hover:scale-105 transition-all duration-300 cursor-pointer text-neutral-700 dark:text-neutral-300 shadow-sm hover:shadow-xl">
+                                <i class="devicon-css3-plain text-3xl"></i><span class="font-bold">CSS3</span>
+                            </div>
                         </div>
                     </div>
                 </div>
