@@ -1004,3 +1004,81 @@ window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(initOrbs, 200);
 });
+
+// --- Contact Form AJAX Submission ---
+const contactForm = document.getElementById("contact-form");
+const contactSuccess = document.getElementById("contact-success");
+const contactSubmitBtn = document.getElementById("contact-submit");
+
+if (contactForm && contactSuccess && contactSubmitBtn) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    
+    // Update button state
+    const originalBtnContent = contactSubmitBtn.innerHTML;
+    contactSubmitBtn.innerHTML = `<span>Sending...</span> <i class="fa-solid fa-circle-notch fa-spin"></i>`;
+    contactSubmitBtn.disabled = true;
+    contactSubmitBtn.classList.add("opacity-70", "cursor-not-allowed");
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: new FormData(contactForm),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        contactForm.reset();
+        
+        // Show success overlay
+        contactSuccess.classList.remove("hidden");
+        contactSuccess.classList.add("flex");
+        // small delay for transition
+        setTimeout(() => {
+          contactSuccess.classList.remove("opacity-0");
+          contactSuccess.classList.add("opacity-100");
+        }, 10);
+      } else {
+        alert("Oops! There was a problem submitting your form.");
+      }
+    } catch (error) {
+      alert("Oops! There was a problem submitting your form.");
+    } finally {
+      // Restore button state
+      contactSubmitBtn.innerHTML = originalBtnContent;
+      contactSubmitBtn.disabled = false;
+      contactSubmitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+    }
+  });
+}
+
+// --- Generate Random Message ---
+const generateMsgBtn = document.getElementById("generate-message-btn");
+const messageField = document.getElementById("message");
+
+if (generateMsgBtn && messageField) {
+  const sampleMessages = [
+    "Hi Lalit, I loved going through your portfolio! Are you currently open to full-time engineering roles? I'd love to connect and discuss an opportunity.",
+    "Hey Lalit, great design on this site! I'm also passionate about software architecture and would love to connect and chat.",
+    "Hello! Your experience with full-stack development is exactly what our team is looking for. Would you be interested in a quick intro call?",
+    "Hi there! I came across your profile and was really impressed by your projects. Let's connect—I'd love to follow your tech journey.",
+    "Hey Lalit, I'm reaching out because we have an open software engineering position that aligns perfectly with your skill set. Let me know if you're open to chatting!"
+  ];
+  
+  generateMsgBtn.addEventListener("click", () => {
+    const randomMsg = sampleMessages[Math.floor(Math.random() * sampleMessages.length)];
+    messageField.value = randomMsg;
+    
+    // Add a quick animation to the button to show it worked
+    const icon = generateMsgBtn.querySelector("i");
+    if (icon) {
+      icon.classList.add("fa-shake");
+      setTimeout(() => icon.classList.remove("fa-shake"), 500);
+    }
+    
+    // Trigger focus to highlight the field for the user
+    messageField.focus();
+  });
+}
