@@ -562,13 +562,18 @@ async function loadContent() {
   if (contactActionsEl && data.contact) {
     const { email, phone, phoneHref } = data.contact;
     contactActionsEl.innerHTML = `
-      <a href="mailto:${email}"
-        class="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-black font-bold rounded-full hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(0,0,0,0.4)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transform hover:-translate-y-1">
-        <i class="fa-solid fa-envelope text-base"></i>
-        Say Hello
+      <a href="https://www.linkedin.com/in/lalittambe/" target="_blank"
+        class="px-6 py-3 bg-[#0a66c2] text-white text-sm font-bold rounded-full hover:bg-[#004182] transition-colors flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(10,102,194,0.3)] hover:shadow-[0_0_30px_rgba(10,102,194,0.5)] transform hover:-translate-y-1">
+        <i class="fa-brands fa-linkedin text-base"></i>
+        Message on LinkedIn
       </a>
+      <button onclick="window.copyToClipboard('${email}', this)"
+        class="px-6 py-3 bg-neutral-900 dark:bg-white text-white dark:text-black text-sm font-bold rounded-full hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(0,0,0,0.4)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transform hover:-translate-y-1">
+        <i class="fa-regular fa-copy text-base"></i>
+        <span>Copy Email</span>
+      </button>
       <a href="${phoneHref}"
-        class="px-8 py-4 bg-transparent border border-neutral-400 dark:border-white/20 text-neutral-900 dark:text-white font-medium rounded-full hover:bg-neutral-200 dark:hover:bg-white/5 transition-all flex items-center gap-2 backdrop-blur-sm">
+        class="px-6 py-3 bg-transparent border border-neutral-400 dark:border-white/20 text-neutral-900 dark:text-white text-sm font-medium rounded-full hover:bg-neutral-200 dark:hover:bg-white/5 transition-all flex items-center justify-center gap-2 backdrop-blur-sm">
         <i class="fa-solid fa-phone text-base"></i>
         ${phone}
       </a>`;
@@ -1078,7 +1083,19 @@ if (generateMsgBtn && messageField) {
       setTimeout(() => icon.classList.remove("fa-shake"), 500);
     }
     
-    // Trigger focus to highlight the field for the user
     messageField.focus();
   });
 }
+
+// Copy to clipboard utility
+window.copyToClipboard = function (text, btnElement) {
+  navigator.clipboard.writeText(text).then(() => {
+    const originalHTML = btnElement.innerHTML;
+    btnElement.innerHTML = '<i class="fa-solid fa-check text-green-500 text-base"></i> <span>Copied!</span>';
+    setTimeout(() => {
+      btnElement.innerHTML = originalHTML;
+    }, 2000);
+  }).catch((err) => {
+    console.error("Failed to copy text: ", err);
+  });
+};
