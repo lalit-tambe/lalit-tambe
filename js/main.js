@@ -135,7 +135,7 @@ if (document.readyState === "loading") {
 async function loadContent() {
   let data;
   try {
-    const res = await fetch("/content.json");
+    const res = await fetch("/data/content.json");
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     data = await res.json();
   } catch (err) {
@@ -545,6 +545,26 @@ async function loadContent() {
       .join("");
 
     initTilt();
+  }
+
+  // ── 6.6. Awards & Activities ───────────────────────────────────────────
+  const awardsGridEl = document.getElementById("awards-grid");
+  if (awardsGridEl && Array.isArray(data.awards)) {
+    awardsGridEl.innerHTML = data.awards
+      .map(
+        (award) => `
+      <div class="glass-panel rounded-2xl overflow-hidden shadow-lg group flex flex-col">
+          <div class="overflow-hidden">
+              <img src="${award.image}" alt="${award.title}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="p-6 flex-grow bg-white/40 dark:bg-black/20 border-t border-neutral-200 dark:border-white/5">
+              <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">${award.title}</h3>
+              <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">${award.description}</p>
+          </div>
+      </div>
+      `,
+      )
+      .join("");
   }
 
   // ── 7. Contact card ────────────────────────────────────────────────────
