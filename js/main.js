@@ -135,7 +135,7 @@ if (document.readyState === "loading") {
 async function loadContent() {
   let data;
   try {
-    const res = await fetch("/data/content.json");
+    const res = await fetch("./data/content.json");
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     data = await res.json();
   } catch (err) {
