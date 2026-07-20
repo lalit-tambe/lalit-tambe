@@ -83,6 +83,35 @@
       "My approach is defined by full-cycle ownership, from architecting a secure RBAC system to engineering an asynchronous bulk import. I make it my goal to bridge the gap between deep backend complexity and a clean, intuitive user experience."
     ]
   },
+  "skills": {
+    "Languages": [
+      "Python",
+      "PHP",
+      "Go",
+      "JavaScript",
+      "TypeScript",
+      "Bash"
+    ],
+    "Frameworks": [
+      "Laravel",
+      "Django",
+      "React",
+      "NodeJS",
+      "Livewire"
+    ],
+    "Databases": [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "SQL Server"
+    ],
+    "Tools": [
+      "Git",
+      "Docker",
+      "Postman",
+      "CI/CD Actions"
+    ]
+  },
   "experience": {
     "heading": "Experience",
     "subheading": "My professional journey in software engineering.",

@@ -1,244 +1,33 @@
-/* Extracted styles from index.html */
+/* Minimalist typography theme overrides */
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+::-webkit-scrollbar { 
+    width: 6px; 
 }
-::-webkit-scrollbar-track {
-  background: transparent;
+::-webkit-scrollbar-track { 
+    background: transparent; 
 }
-.dark ::-webkit-scrollbar-track {
-  background: #050505;
+::-webkit-scrollbar-thumb { 
+    background: #e5e5e5; 
 }
-::-webkit-scrollbar-thumb {
-  background: #a3a3a3;
-  border-radius: 4px;
+.dark ::-webkit-scrollbar-thumb { 
+    background: #262626; 
 }
-.dark ::-webkit-scrollbar-thumb {
-  background: #262626;
+::-webkit-scrollbar-thumb:hover { 
+    background: #d4d4d4; 
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #737373;
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+.dark ::-webkit-scrollbar-thumb:hover { 
+    background: #404040; 
 }
 
-/* 
-   Theme Variables 
-   Using CSS variables for complex RGBA glass values to keep HTML clean 
-*/
-/* Prevent white flash on mobile when browser chrome (address bar / bottom nav)
-   dynamically shows or hides during scroll. Without an explicit background on
-   html the default white browser background bleeds through. */
-html {
-  background-color: #f8fafc; /* slate-50 – matches light-mode body bg */
-}
-html.dark {
-  background-color: #0a0a0a; /* neutral-950 – matches dark-mode body bg */
+/* Base link hover effect */
+a {
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
-:root {
-  /* Light Mode Glass - Increased Transparency */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --glass-shadow:
-    0 4px 30px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-  --glass-nav-bg: rgba(255, 255, 255, 0.15);
-  --glass-nav-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
-  /* Navbar progress defaults (light mode) */
-  --nav-progress-color: rgba(15, 23, 42, 0.92); /* neutral-900 */
-  --nav-progress-glow: 0 6px 18px rgba(15, 23, 42, 0.06);
-  --text-gradient-start: #171717;
-  --text-gradient-end: #525252;
+/* Make bullet points blend in nicely */
+ul li::marker {
+    color: #a3a3a3;
 }
-
-.dark {
-  /* Dark Mode Glass - Increased Transparency */
-  --glass-bg: rgba(10, 10, 10, 0.02);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow:
-    0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  --glass-nav-bg: rgba(5, 5, 5, 0.1);
-  --glass-nav-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  /* Navbar progress for dark mode */
-  --nav-progress-color: rgba(255, 255, 255, 0.88);
-  --nav-progress-glow: 0 6px 18px rgba(255, 255, 255, 0.06);
-  --text-gradient-start: #ffffff;
-  --text-gradient-end: #94a3b8;
-}
-
-/* Glass Utility Classes */
-.glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-}
-
-.glass-card-hover {
-  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  transform-style: preserve-3d;
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.glass-card-hover:hover {
-  transform: translateY(-4px) scale(1.02);
-}
-
-.dark .glass-card-hover:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow:
-    0 20px 40px -10px rgba(0, 0, 0, 0.7),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-}
-
-/* Navbar progress bar as bottom border using pseudo-element
-   Uses --nav-progress-scale (0..1) to set width so it respects
-   parent's rounded corners. */
-#navbar {
-  /* Keep overflow hidden on desktop to constrain the progress pseudo-element,
-     but allow visible overflow on small screens so the absolute mobile menu can
-     extend outside the navbar without being clipped. */
-  overflow: visible;
-}
-
-@media (min-width: 768px) {
-  #navbar {
-    overflow: hidden;
-  }
-}
-
-#navbar::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  width: calc(var(--nav-progress-scale, 0) * 100%);
-  background: var(--nav-progress-color);
-  box-shadow: var(--nav-progress-glow);
-  border-bottom-left-radius: inherit;
-  border-bottom-right-radius: inherit;
-  pointer-events: none;
-  transition: width 200ms linear;
-}
-
-/* Ensure the mobile overlay sits above the nav on small screens */
-#mobile-menu {
-  z-index: 9998;
-}
-
-/* Light mode hover adjustments */
-html:not(.dark) .glass-card-hover:hover {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-}
-
-/* Nav specific glass */
-.glass-nav {
-  background: var(--glass-nav-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--glass-nav-shadow);
-  border: 1px solid var(--glass-border);
-}
-
-/* Gradient Text */
-.text-gradient {
-  background: linear-gradient(
-    to bottom right,
-    var(--text-gradient-start),
-    var(--text-gradient-end)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Scroll Reveal Utility */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Normal bullet text — slightly muted */
-#experience-jobs li p {
-  color: #5f5f5f;
-}
-.dark #experience-jobs li p {
-  color: #b8b8b8;
-}
-
-/* Key terms — semibold, stands out from grey body without competing with titles */
-#experience-jobs li p strong {
-  font-weight: 600;
-  color: #404040;
-}
-.dark #experience-jobs li p strong {
-  font-weight: 600;
-  color: #e5e5e5;
-}
-
-/* Bullet point titles — clearly bold, bigger than key terms */
-#experience-jobs li p > strong:first-child {
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-/* Navigation Link Active State */
-a[href^="#"] .nav-indicator,
-a[href^="#"] .nav-spotlight {
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 300ms ease,
-    visibility 300ms ease;
-}
-
-a[href^="#"].active .nav-indicator,
-a[href^="#"].active .nav-spotlight {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Active link text and font styling */
-a[href^="#"].active {
-  color: rgb(23 23 23 / 1) !important;
-  font-weight: 500 !important;
-}
-
-.dark a[href^="#"].active {
-  color: rgb(255 255 255 / 1) !important;
-}
-
-/* Marquee Animations */
-@keyframes marqueeLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@keyframes marqueeRight {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-.animate-marquee-left {
-  display: flex;
-  width: max-content;
-  animation: marqueeLeft 40s linear infinite;
-}
-.animate-marquee-right {
-  display: flex;
-  width: max-content;
-  animation: marqueeRight 40s linear infinite;
-}
-.marquee-container:hover .animate-marquee-left,
-.marquee-container:hover .animate-marquee-right {
-  animation-play-state: paused;
+.dark ul li::marker {
+    color: #525252;
 }
