@@ -92,9 +92,50 @@ async function loadContent() {
     // Skills (Arsenal)
     const skillsContentEl = document.getElementById("skills-content");
     if (skillsContentEl && data.skills) {
-        skillsContentEl.innerHTML = Object.entries(data.skills).map(([category, items]) => `
-            <p><strong class="text-black dark:text-white font-medium">${category}:</strong> ${items.join(", ")}</p>
-        `).join("");
+        skillsContentEl.className = ""; // Remove default spacing classes
+        skillsContentEl.innerHTML = `
+            <div class="rounded-xl border border-neutral-800 bg-[#0d1117] overflow-hidden shadow-xl font-mono text-sm md:text-[14px]">
+                <!-- Terminal Header -->
+                <div class="flex items-center px-4 py-3 border-b border-neutral-800 bg-[#161b22]">
+                    <div class="flex gap-2 group">
+                        <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                    </div>
+                    <div class="ml-4 text-xs font-mono text-neutral-500 font-medium select-none flex-1 text-center pr-10">
+                        bash - skills
+                    </div>
+                </div>
+                <!-- Authentic yet readable Terminal Body (Neofetch Style) -->
+                <div class="p-5 md:p-6 space-y-4">
+                    <div class="flex items-center flex-wrap gap-2">
+                        <span class="text-emerald-400 font-bold">lalit@tambe</span><span class="text-neutral-500">:</span><span class="text-blue-400 font-bold">~/portfolio</span><span class="text-neutral-500">$</span>
+                        <span class="text-neutral-200">skills --fetch</span>
+                    </div>
+                    
+                    <div class="pt-2 pl-2 md:pl-4">
+                        <div class="text-emerald-400 font-bold mb-1">lalit<span class="text-neutral-500">@</span>tambe</div>
+                        <div class="text-neutral-600 mb-4 tracking-widest">---------------</div>
+                        
+                        <div class="space-y-3">
+                            ${Object.entries(data.skills).map(([category, items]) => `
+                                <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4">
+                                    <span class="text-[#58a6ff] font-bold min-w-[120px]">${category}</span>
+                                    <span class="text-neutral-300 leading-relaxed flex-1">
+                                        ${items.join("<span class='text-neutral-600 mx-1.5'>•</span>")}
+                                    </span>
+                                </div>
+                            `).join("")}
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center pt-4">
+                        <span class="text-emerald-400 font-bold">lalit@tambe</span><span class="text-neutral-500">:</span><span class="text-blue-400 font-bold">~/portfolio</span><span class="text-neutral-500">$</span>
+                        <span class="ml-2 animate-[pulse_1s_step-end_infinite] w-2 h-4 bg-neutral-200 inline-block"></span>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 
     // Competencies
