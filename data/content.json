@@ -144,6 +144,19 @@
   },
   "projects": [
     {
+      "title": "ScrollNavigator",
+      "description": "LLM Scroll Navigator is a vanilla JavaScript browser extension (Manifest V3) that adds keyboard shortcuts, a draggable UI widget, and a minimap for quickly navigating through long conversations on popular LLM web interfaces. It currently supports ChatGPT, Claude, and Gemini.",
+      "icon": "fa-solid fa-database",
+      "tags": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "links": {
+        "github": "https://github.com/lalit-tambe/scroll-navigator"
+      }
+    },
+    {
       "title": "mongo-aggregate",
       "description": "A fluent, chainable API designed to abstract complex MongoDB aggregation stages ($match, $lookup) into intuitive methods like where() and select().",
       "icon": "fa-solid fa-database",
@@ -153,8 +166,38 @@
         "Jest"
       ],
       "links": {
-        "npm": "#",
-        "github": "#"
+        "npm": "https://www.npmjs.com/package/mongo-aggregate",
+        "github": "https://github.com/lalit-tambe/mongo-aggregate"
+      }
+    },
+    {
+      "title": "FraudShield",
+      "description": "Fraud Shield is a transaction-scoring pipeline designed to evaluate incoming payment events against a sliding window of recent activity in real-time. It returns an approve/decline/review decision in under 50ms while guaranteeing no data is lost during asynchronous processing.",
+      "icon": "fa-solid fa-database",
+      "tags": [
+        "Go",
+        "Redis",
+        "Lua",
+        "Docker",
+        "Redpanda",
+        "PostgreSQL"
+      ],
+      "links": {
+        "github": "https://github.com/lalit-tambe/fraudshield"
+      }
+    },
+    {
+      "title": "ZeroScale",
+      "description": "ZeroScale monitors HTTP traffic and automatically scales your Kubernetes Deployments down to zero replicas when idle, saving cluster resources. When a new request comes in, the ZeroScale proxy intercepts the request, buffers it, triggers a scale-up of the target deployment, and seamlessly forwards the traffic once the pod is ready.",
+      "icon": "fa-solid fa-database",
+      "tags": [
+        "Go",
+        "Docker",
+        "Shell",
+        "Kubernetes"
+      ],
+      "links": {
+        "github": "https://github.com/lalit-tambe/zeroscale"
       }
     }
   ],
